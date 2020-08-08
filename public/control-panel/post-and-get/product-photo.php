@@ -28,8 +28,8 @@ if (isset($_POST['create'])) {
         $handle->image_ratio_crop = 'C';
         $handle->image_watermark = '../../img/logo/logo-watermark.png';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 500;
-        $handle->image_y = 500;
+        $handle->image_x = 600;
+        $handle->image_y = 400;
 
         $handle->Process($dir_dest);
 
@@ -46,8 +46,8 @@ if (isset($_POST['create'])) {
         $handle->file_new_name_ext = 'jpg';
         $handle->image_ratio_crop = 'C';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 80;
-        $handle->image_y = 80;
+        $handle->image_x = 200;
+        $handle->image_y = 200;
 
         $handle->Process($dir_dest_thumb);
 
@@ -103,8 +103,8 @@ if (isset($_POST['update'])) {
         $handle->image_ratio_crop = 'C';
         $handle->image_watermark = '../../img/logo/logo-watermark.png';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 500;
-        $handle->image_y = 500;
+        $handle->image_x = 1000;
+        $handle->image_y = 600;
 
         $handle->Process($dir_dest);
 
@@ -119,8 +119,8 @@ if (isset($_POST['update'])) {
         $handle->file_new_name_ext = FALSE;
         $handle->image_ratio_crop = 'C';
        $handle->file_new_name_body = $img;
-        $handle->image_x = 80;
-        $handle->image_y = 80;
+        $handle->image_x = 200;
+        $handle->image_y = 200;
 
         $handle->Process($dir_dest_thumb);
 

@@ -6,6 +6,7 @@ import View_Product from '././components/View_Product/View_Product';
 import Cart from '././components/Cart/Cart';
 import Checkout from '././components/Checkout/Checkout';
 import Login from '././components/Login/Login';
+import Register from '././components/Register/Register';
 import MyAccount from '././components/My_Account/Profile';
 import Brand from '././components/Brand/Brand';
 import About from '././components/About/About';
@@ -35,6 +36,7 @@ const Routes = () => (
 <Route path="/cart" component={Cart}/>
 <Route path="/checkout" component={Checkout}/>
 <Route path="/login" component={Login}/>
+<Route path="/register" component={Register}/>
 <Route path="/my-account/profile" component={MyAccount}/>
 <Route path="/brands" component={Brand}/>
 <Route path="/about" component={About}/>

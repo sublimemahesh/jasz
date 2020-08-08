@@ -8,6 +8,7 @@ import flag_german from '../../images/home1/flag-german.jpg';
 import Select from 'react-select';
 import {PostData} from '../../services/PostData';
 import $ from 'jquery';
+import { NavLink } from 'react-router-dom';
 
 //
 //export default withRouter(MyComponent);
@@ -114,24 +115,24 @@ class Header extends Component {
                             <div className="row">
                                 <div className="col-md-3 col-sm-3 col-xs-12">
                                     <div className="logo4">
-                                        <a href="/home"><img src={logo} alt="Logo" /></a>
+                                        <NavLink to="/home"><img src={logo} alt="Logo" /></NavLink>
                                     </div>
                                 </div>
-                                <div className="col-md-2 col-sm-2 col-xs-12 col-space">
+                                <div className="col-md-3 col-sm-1 col-xs-12 col-space">
                                 </div>
                                 <div className="col-md-2 col-sm-2 col-xs-6">
                                     <div className="wrap-register-cart">
                                         <div className="register-box">
                                             <h4 className="header-contact-details">HOTLINE</h4>
-                                            <p className="">+94 71 869 5499</p>
+                                            <p className="">+94 71 222 6622</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-2 col-sm-2 col-xs-6">
+                                <div className="col-md-1 col-sm-2 col-xs-6">
                                     <div className="wrap-register-cart wrap-register-cart-hotline">
                                         <div className="register-box">
                                            <h4 className="header-contact-details">EMAIL</h4>
-                                            <p className="header-contact-details-p">dewendraa@gmail.com</p>
+                                            <p className="header-contact-details-p">info@digizone.lk</p>
                                         </div>
                                     </div>
                                 </div>
@@ -140,16 +141,16 @@ class Header extends Component {
                                     <div className="wrap-register-cart">
                                         <div className="register-box">
                                             <ul>
-                                                <li><a href="/login">Login</a></li>
-                                                <li><a href="/login">register</a></li>
+                                                <li><NavLink to="/login">Login</NavLink></li>
+                                                <li><NavLink to="/register">Sign Up</NavLink></li>
                                             </ul>
-                                            <p>My Account & Oder</p>
+                                            <p>My Account & Order</p>
                                         </div>
                                         <div className="mini-cart mini-cart-2">
-                                            <a href="/cart" className="header-mini-cart2">
+                                            <NavLink to="/cart" className="header-mini-cart2">
                                                 <span className="total-mini-cart-icon"><i className="fa fa-shopping-basket"></i></span>
                                                 <span className="total-mini-cart-item" id="header-cart" items={this.state.count}>{this.state.count}</span>
-                                            </a>
+                                            </NavLink>
                                         </div>
                                     </div>
                                 </div>
@@ -162,14 +163,14 @@ class Header extends Component {
                                 <div className="col-md-9 col-sm-12 col-xs-12 col-md-offset-3">
                                     <nav className="main-nav main-nav4">
                                         <ul>
-                                            <li><a href="../">home</a></li>
-                                            <li><a href="/products">products</a></li>
-                                            <li><a href="/brands">brands</a></li>
-                                            <li><a href="/offer">Offer</a></li>
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/contact">Contact</a></li>
+                                            <li><NavLink to="../">home</NavLink></li>
+                                            <li><NavLink to="/products">products</NavLink></li>
+                                            <li><NavLink to="/brands">brands</NavLink></li>
+                                            <li><NavLink to="/offer">Offer</NavLink></li>
+                                            <li><NavLink to="/about">About</NavLink></li>
+                                            <li><NavLink to="/contact">Contact</NavLink></li>
                                         </ul>
-                                        <a href="#" className="toggle-mobile-menu" onClick={this.displayNav}><span>Menu</span></a>
+                                        <NavLink to="#" className="toggle-mobile-menu" onClick={this.displayNav}><span>Menu</span></NavLink>
                                     </nav>
                                 </div>
                             </div>

@@ -15,6 +15,7 @@ class Order {
     public $country;
     public $postalCode;
     public $amount;
+    public $shipping_amount;
     public $orderNote;
     public $status;
     public $deliveryStatus;
@@ -39,6 +40,7 @@ class Order {
             $this->country = $result['country'];
             $this->postalCode = $result['postal_code'];
             $this->amount = $result['amount'];
+            $this->shipping_amount = $result['shipping_amount'];
             $this->orderNote = $result['order_note'];
             $this->status = $result['status'];
             $this->deliveryStatus = $result['delivery_status'];
@@ -60,6 +62,7 @@ class Order {
                 . "`country`,"
                 . "`postal_code`,"
                 . "`amount`,"
+                . "`shipping_amount`,"
                 . "`order_note`,"
                 . "`status`,"
                 . "`delivery_status`,"
@@ -73,6 +76,7 @@ class Order {
                 . "'" . $this->country . "', "
                 . "'" . $this->postalCode . "', "
                 . "'" . $this->amount . "', "
+                . "'" . $this->shipping_amount . "', "
                 . "'" . $this->order_note . "', "
                 . "'" . $this->status . "', "
                 . "'" . $this->deliveryStatus . "', "
@@ -776,6 +780,7 @@ class Order {
                 . "`country`,"
                 . "`postal_code`,"
                 . "`amount`,"
+                . "`shipping_amount`,"
                 . "`order_note`,"
                 . "`status`) VALUES  ("
                 . "'" . $orderedAt . "', "
@@ -785,6 +790,7 @@ class Order {
                 . "'" . $this->country . "', "
                 . "'" . $this->postalCode . "', "
                 . "'" . $this->amount . "', "
+                . "'" . $this->shipping_amount . "', "
                 . "'" . $this->orderNote . "', "
                 . "'" . 1 . "')";
         

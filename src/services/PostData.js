@@ -1,26 +1,24 @@
 export function PostData(type, userData) {
-//	let BaseURL = 'http://localhost/jasz/public/api/' + type + '.php';
+    // let BaseURL = 'http://localhost/jasz/public/api/' + type + '.php';
     let BaseURL = 'https://jasz.synotec.lk/api/' + type + '.php';
 
     return new Promise((resolve, reject) => {
         console.log(`userData:`, userData);
-        fetch(BaseURL,
-                {
+        fetch(BaseURL, {
 
-                    method: 'POST',
-                    headers:
-                            {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                    body: JSON.stringify(userData)
-                })
-                .then((response) => response.json()
-                            .then((res) => {
-                                resolve(res);
-                            }))
-                .catch((error) => {
-                    reject(error);
-                });
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then((response) => response.json()
+                .then((res) => {
+                    resolve(res);
+                }))
+            .catch((error) => {
+                reject(error);
+            });
     });
 }
