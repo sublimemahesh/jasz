@@ -14,6 +14,8 @@ if (isset($_POST['create'])) {
     $PRODUCT->description = $_POST['description'];
     $PRODUCT->price = $_POST['price'];
     $PRODUCT->discount = $_POST['discount'];
+    $PRODUCT->shipping_fee = $_POST['shipping_fee'];
+    $PRODUCT->isFeaturedProduct = $_POST['featured_product'];
     $PRODUCT->isActive = 1;
     $PRODUCT->queue = 0;
     
@@ -88,6 +90,7 @@ if (isset($_POST['create'])) {
     $PRODUCT->image_name2 = $imgName1;
     $VALID->check($PRODUCT, [
         'category' => ['required' => TRUE],
+        'brand' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'short_description' => ['required' => TRUE],
         'description' => ['required' => TRUE],
@@ -212,12 +215,15 @@ if (isset($_POST['update'])) {
     $PRODUCT->description = $_POST['description'];
     $PRODUCT->price = $_POST['price'];
     $PRODUCT->discount = $_POST['discount'];
+    $PRODUCT->shipping_fee = $_POST['shipping_fee'];
     $PRODUCT->isActive = $_POST['is_active'];
+    $PRODUCT->isFeaturedProduct = $_POST['featured_product'];
 
 
     $VALID = new Validator();
     $VALID->check($PRODUCT, [
         'category' => ['required' => TRUE],
+        'brand' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'short_description' => ['required' => TRUE],
         'description' => ['required' => TRUE],

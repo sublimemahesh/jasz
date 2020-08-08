@@ -86,7 +86,7 @@ class Order_View extends Component {
                                 <td>{index+1}</td>
                                 <td>{product.product_name}</td>
                                 <td>{product.qty}</td>
-                                <td className="text-right">{product.amount}</td>
+                                <td className="text-right">{new Intl.NumberFormat().format(product.amount)}</td>
 
                             </tr>
 
@@ -135,8 +135,12 @@ class Order_View extends Component {
                                                     <th>{this.state.orderDetails.postal_code}</th>
                                                 </tr>
                                                 <tr>
+                                                    <th>Shipping Fee</th>
+                                                    <th>Rs. {new Intl.NumberFormat().format(this.state.orderDetails.shipping_amount)}</th>
+                                                </tr>
+                                                <tr>
                                                     <th>Total Amount</th>
-                                                    <th>Rs. {this.state.orderDetails.amount}/=</th>
+                                                    <th>Rs. {new Intl.NumberFormat().format(this.state.orderDetails.amount)}</th>
                                                 </tr>
                                                 <tr>
                                                     <th>Order Note</th>

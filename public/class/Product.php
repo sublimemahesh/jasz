@@ -24,12 +24,14 @@ class Product {
     public $description;
     public $price;
     public $discount;
+    public $shipping_fee;
     public $isActive;
+    public $isFeaturedProduct;
     public $queue;
 
     public function __construct($id) {
         if ($id) {
-            $query = "SELECT `id`, `category`,`sub_category`, `brand`, `name`,`image_name`,`image_name2`,`short_description`,`description`,`price`,`discount`,`is_active`,`queue` FROM `product` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `category`,`sub_category`, `brand`, `name`,`image_name`,`image_name2`,`short_description`,`description`,`price`,`discount`,`shipping_fee`,`is_active`,`is_featured_product`,`queue` FROM `product` WHERE `id`=" . $id;
             $db = new Database();
             $result = mysql_fetch_array($db->readQuery($query));
             $this->id = $result['id'];
@@ -43,14 +45,16 @@ class Product {
             $this->description = $result['description'];
             $this->price = $result['price'];
             $this->discount = $result['discount'];
+            $this->shipping_fee = $result['shipping_fee'];
             $this->isActive = $result['is_active'];
+            $this->isFeaturedProduct = $result['is_featured_product'];
             $this->queue = $result['queue'];
             return $this;
         }
     }
 
     public function create() {
-        $query = "INSERT INTO `product` (`category`,`sub_category`,`brand`,`name`,`image_name`,`image_name2`,`short_description`,`description`,`price`,`discount`,`is_active`,`queue`) VALUES  ('"
+        $query = "INSERT INTO `product` (`category`,`sub_category`,`brand`,`name`,`image_name`,`image_name2`,`short_description`,`description`,`price`,`discount`,`shipping_fee`,`is_active`,`is_featured_product`,`queue`) VALUES  ('"
                 . $this->category . "', '"
                 . $this->sub_category . "', '"
                 . $this->brand . "', '"
@@ -61,7 +65,9 @@ class Product {
                 . $this->description . "', '"
                 . $this->price . "', '"
                 . $this->discount . "', '"
+                . $this->shipping_fee . "', '"
                 . $this->isActive . "', '"
+                . $this->isFeaturedProduct . "', '"
                 . $this->queue . "')";
 
         $db = new Database();
@@ -97,7 +103,9 @@ class Product {
                 . "`description` ='" . $this->description . "', "
                 . "`price` ='" . $this->price . "', "
                 . "`discount` ='" . $this->discount . "', "
+                . "`shipping_fee` ='" . $this->shipping_fee . "', "
                 . "`is_active` ='" . $this->isActive . "', "
+                . "`is_featured_product` ='" . $this->isFeaturedProduct . "', "
                 . "`queue` ='" . $this->queue . "' "
                 . "WHERE `id` = '" . $this->id . "'";
         $db = new Database();
@@ -202,6 +210,17 @@ class Product {
 
     public function getAll() {
         $query = "SELECT * FROM `product` ORDER BY `queue`";
+        $db = new Database();
+        $result = $db->readQuery1($query);
+        $array_res = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
+    public function getFeaturedProducts() {
+        $query = "SELECT * FROM `product` WHERE `is_featured_product` = 1 ORDER BY `queue`";
         $db = new Database();
         $result = $db->readQuery1($query);
         $array_res = array();

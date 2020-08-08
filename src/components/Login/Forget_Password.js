@@ -3,10 +3,7 @@ import {PostData} from '../../services/PostData';
 import $ from 'jquery';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { withSwalInstance } from 'sweetalert2-react';
-import swal from 'sweetalert2';
-
-const SweetAlert = withSwalInstance(swal);
+import Swal from 'sweetalert2';
 
 class Forget_Password extends Component {
     constructor(props) {
@@ -22,60 +19,43 @@ class Forget_Password extends Component {
             const email =  $('#txtEmail').val();
             let reg = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
             if (email == '' || !email) {
-                const getAlert = () => (
-                    <SweetAlert
-                        show="true"
-                        title="Error"
-                        text="Enter Email"
-                        type= "error"
-                      />
-                );
-                this.setState({
-                     alert: getAlert()
-                 });
+                 Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    text: "Enter Email.",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                  return false;
             }  else if (!reg.test(email)) {
-                const getAlert = () => (
-                    <SweetAlert
-                        show="true"
-                        title="Error"
-                        text="Enter Valid email"
-                        type= "error"
-                      />
-
-                   );
-               this.setState({
-                    alert: getAlert()
-                });
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    text: "Enter Valid email.",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                  return false;
             }  else {
                 PostData('send-reset-code', email).then((result1) => {
                     let responseJson1 = result1;
                     if (responseJson1.feedData === 'success') {
-                        const getAlert = () => (
-                            <SweetAlert
-                                show="true"
-                                title="Success"
-                                text="The reset code was sent successfully to your e-mail address."
-                                type= "success"
-                              />
-                           );
-                           this.setState({
-                                alert: getAlert()
-                            });
+                        Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                text: "The reset code was sent successfully to your e-mail address.",
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                             this.props.history.push("/reset-password");
                      } else {
-                         const getAlert = () => (
-                            <SweetAlert
-                                show="true"
-                                title="Error"
-                                text={responseJson1.feedData}
-                                type= "error"
-                              />
-                           );
-                           this.setState({
-                                alert: getAlert()
-                            });
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'error',
+                                text: "{responseJson1.feedData}",
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                      }
                 });
             }

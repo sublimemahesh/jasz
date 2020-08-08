@@ -1,126 +1,127 @@
-import React, { Component } from 'react';
+import React, { Component }
+    from 'react';
+import Swal from 'sweetalert2';
+import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
-import { withSwalInstance } from 'sweetalert2-react';
-import swal from 'sweetalert2';
-
-const SweetAlert = withSwalInstance(swal);
+import { PostData } from '../../../services/PostData';
+import Product_Item from './Product_Item/Product_Item';
 
 class Product_List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            alert: null
+            alert: null,
+            categoryDetails: false,
+            subCategoryDetails: false,
+            brandDetails: false
         }
         this.addToCart = this.addToCart.bind(this);
+        this.getCategoryDetails = this.getCategoryDetails.bind(this);
+        this.getSubCategoryDetails = this.getSubCategoryDetails.bind(this);
+        this.getBrandDetails = this.getBrandDetails.bind(this);
+    }
+    componentWillMount() {
+        this.getCategoryDetails();
+        this.getSubCategoryDetails();
+        this.getBrandDetails();
+        
     }
 
-    addToCart(id)  {
+    addToCart(id) {
         let items = sessionStorage.getItem("cart");
         let arr = [];
+        // console.log("items", JSON.parse(sessionStorage.getItem("cart")));
+        if (items === '' || items === null) {
 
-        if(items === '' || items === null) {
-
-            arr =  id;
-            sessionStorage.setItem("cart", arr);
+            let arr = [{ id: id, qty: 1 }];
+            sessionStorage.setItem("cart", JSON.stringify(arr));
+            // console.log("items", JSON.parse(sessionStorage.getItem("cart")));
             let count = $('#header-cart').attr('items');
             let new_item_count = parseInt(count) + 1;
             sessionStorage.setItem("cart_count", new_item_count);
             $('#header-cart').attr('items', new_item_count);
             $('#header-cart').text(new_item_count);
-
-             const getAlert = () => (
-                    <SweetAlert
-                        show="true"
-                        title="Success"
-                        text="product is successfully added to the cart"
-                        type= "success"
-                      />
-                );
-                this.setState({
-                     alert: getAlert()
-                 });
-
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                text: 'Product is successfully added to the cart',
+                showConfirmButton: false,
+                timer: 1500
+            })
         } else {
-            let cart_array = items.split(',');
-            if(cart_array.includes(id)) {
-                 const getAlert = () => (
-                    <SweetAlert
-                        show="true"
-                        title="Error"
-                        text="product is already exsit in the cart"
-                        type= "error"
-                      />
-               );
-               this.setState({
-                    alert: getAlert()
-                });
+            let cart = [];
+            cart = JSON.parse(sessionStorage.getItem("cart"));
+
+            let products = cart.some(item => item.id === id);
+            if (products) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    text: 'Product is already exsit in the cart',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             } else {
-                arr =  items.concat(',', id);
-                sessionStorage.setItem("cart", arr);
+                let arr = { id: id, qty: 1 };
+                cart.push(arr);
+                sessionStorage.setItem("cart", JSON.stringify(cart));
                 let count = $('#header-cart').attr('items');
                 let new_item_count = parseInt(count) + 1;
                 sessionStorage.setItem("cart_count", new_item_count);
                 $('#header-cart').attr('items', new_item_count);
                 $('#header-cart').text(new_item_count);
-
-                 const getAlert = () => (
-                    <SweetAlert
-                        show="true"
-                        title="Success"
-                        text="product is successfully added to the cart"
-                        type= "success"
-                      />
-                );
-                this.setState({
-                     alert: getAlert()
-                 });
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    text: 'Product is successfully added to the cart',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         }
-
-
-
-
+    }
+    getCategoryDetails() {
+        PostData('category').then((result3) => {
+            // console.log("123456: ", result3);
+            let responseJson3 = result3;
+            if (responseJson3.feedData) {
+                this.setState({ categoryDetails: responseJson3.feedData });
+            }
+        });
+    }
+    getSubCategoryDetails() {
+        PostData('subcategory').then((result4) => {
+            // console.log("123456: ", result4);
+            let responseJson4 = result4;
+            if (responseJson4.feedData) {
+                this.setState({ subCategoryDetails: responseJson4.feedData });
+            }
+            
+        });
+    }
+    getBrandDetails() {
+        PostData('brand').then((result5) => {
+            // console.log("123456: ", result5);
+            let responseJson5 = result5;
+            if (responseJson5.feedData) {
+                this.setState({ brandDetails: responseJson5.feedData });
+            }
+        });
     }
     render() {
-        let Product_List = this.props.feedData
-                .map(function (feedData, index) {
-console.log(feedData);
-                    return (
-                            <div className="item col-md-3 col-sm-4">
-                                <div className="item-product">
-                                    <div className="product-thumb">
-                                        <a className="product-thumb-link" href={`/product-view/${feedData.id}`}>
-                                            <img className="first-thumb" alt="" src={`upload/product/${feedData.image_name}`} />
-                                            <img className="second-thumb" alt="" src={`upload/product/${feedData.image_name2}`} />
-                                        </a>
-                                        <div className="product-info-cart">
-                                            <a className="addcart-link" onClick={() => this.addToCart(feedData.id)}><i className="fa fa-shopping-cart"></i> Add to Cart</a>
-                                            {this.state.alert}
-                                        </div>
-                                    </div>
-                                    <div className="product-info">
-                                        <h3 className="title-product"><a href={`/product-view/${feedData.id}`}>{feedData.name}</a></h3>
-                                        <div className="info-price">
-                                            <span>Rs. {feedData.price}</span><del>Rs. {feedData.price}</del>
-                                        </div>
-                                        <div className="product-rating">
-                                            <div className="inner-rating"></div>
-                                            <span>(6s)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            )
-                }, this);
+        // console.log("this.state", this.state);
         return (
-                <div className="wrap-item1">
-                    <div className="row col-md-12 prod-list">
-                        {Product_List}
-                    </div>
+            <div className="wrap-item1">
+                <div className="row col-md-12 prod-list">
+                    {this.state.categoryDetails && this.state.subCategoryDetails && this.state.brandDetails &&
+                        this.props.feedData.map((feedData) =>
+                            <Product_Item feedData={feedData} alert={this.state.alert} addToCart={this.addToCart} categories={this.state.categoryDetails} subcategories={this.state.subCategoryDetails} brands={this.state.brandDetails} />
+                        )
+                    }
                 </div>
+            </div>
 
-                );
+        );
     }
 }
 export default Product_List;

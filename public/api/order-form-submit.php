@@ -13,6 +13,7 @@ if ($json) {
     $ORDER->city = $json['city'];
     $ORDER->orderNote = $json['orderNotes'];
     $ORDER->amount = $json['totalAmount'];
+    $ORDER->shipping_amount = $json['shippingAmount'];
 
     $result = $ORDER->createOrder();
 

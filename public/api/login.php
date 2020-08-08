@@ -6,7 +6,7 @@ $json = json_decode(file_get_contents('php://input'), true);
 
 $MEMBER = new Member(NULL);
 if ($json) {
-    $MEMBER->username = $json['username'];
+    $MEMBER->email = $json['email'];
     $MEMBER->password = $json['password'];
 
     $result = $MEMBER->login();

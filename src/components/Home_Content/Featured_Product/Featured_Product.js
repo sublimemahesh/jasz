@@ -4,11 +4,10 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { NavLink } from 'react-router-dom';
 
-class Best_Deal extends Component {
+class Featured_Product extends Component {
     constructor(props) {
-        // sessionStorage.setItem("cart", '');
-        // sessionStorage.setItem("cart_count", '');
         super(props);
         this.state = {
             responsive: {
@@ -16,13 +15,13 @@ class Best_Deal extends Component {
                     items: 1,
                 },
                 580: {
-                    items: 2,
+                    items: 1,
                 },
                 600: {
-                    items: 3,
+                    items: 1,
                 },
                 1000: {
-                    items: 4,
+                    items: 1,
                 },
             },
             alert: null
@@ -38,6 +37,7 @@ class Best_Deal extends Component {
 
             let arr = [{ id: id, qty: 1 }];
             sessionStorage.setItem("cart", JSON.stringify(arr));
+            console.log("items", JSON.parse(sessionStorage.getItem("cart")));
             let count = $('#header-cart').attr('items');
             let new_item_count = parseInt(count) + 1;
             sessionStorage.setItem("cart_count", new_item_count);
@@ -83,18 +83,18 @@ class Best_Deal extends Component {
         }
     }
     render() {
-        let BestDeal = this.props.feedData
+        let FeaturedProduct = this.props.feedData
             .map(function (feedData, index) {
                 return (
                     <div className="item">
                         <div className="item-product5">
                             <div className="product-thumb product-thumb5">
-                                <a href={`/product-view/${feedData.id}`} className="product-thumb-link">
+                                <NavLink to={`/product-view/${feedData.id}`} className="product-thumb-link">
                                     <img className="first-thumb" src={`upload/product/${feedData.image_name}`} alt="" />
-                                    <img className="second-thumb" src={`upload/product/${feedData.image_name2}`} alt="" />
-                                </a>
+                                    <img className="second-thumb" src={`upload/product/${feedData.image_name}`} alt="" />
+                                </NavLink>
                                 <div className="product-info-cart">
-                                    <a className="addcart-link" onClick={() => this.addToCart(feedData.id)}><i className="fa fa-shopping-basket"></i>  Add to Cart</a>
+                                    <span className="addcart-link" onClick={() => this.addToCart(feedData.id)}><i className="fa fa-shopping-basket"></i>  Add to Cart</span>
                                     {this.state.alert}
                                 </div>
                             </div>
@@ -112,26 +112,14 @@ class Best_Deal extends Component {
 
         return (
 
-            <div className="main-content-home5 best-deal">
-                <div className="container">
-                    <div className="popcat-list-box popcat-list-box1">
-                        <h2 className="h2-white"><span>best deals</span></h2>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-12 col-sm-12 col-xs-12">
-                            <div className="content-popular5">
-                                <div className="tab-content">
-                                    <div role="tabpanel" className="tab-pane fade in active" id="best1">
-                                        <div className="popular-cat-slider slider-home5">
-                                            <div className="wrap-item" data-pagination="false" data-navigation="true" data-itemscustom="[[0, 1],[768, 2],[992, 3],[1200, 4]]">
-                                                <OwlCarousel items={4} margin={0} autoplay={false} nav dots={false} responsive={this.state.responsive}>
-                                                    {BestDeal}
-                                                </OwlCarousel>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div className="testi col-md-3 col-sm-6 col-sm-order-3 col-xs-12">
+                <div className="hot-deals featured-products">
+                    <h2><i className="fa fa-clock-o"></i> Hot deal</h2>
+                    <div className="hotdeals-slider slider-home4 simple-owl-slider">
+                        <div className="wrap-item" data-navigation="true" data-pagination="false" data-itemscustom="[[0,1]]">
+                            <OwlCarousel items={1} margin={0} autoplay={true} loop nav dots={false} responsive={this.state.responsive}>
+                                {FeaturedProduct}
+                            </OwlCarousel>
                         </div>
                     </div>
                 </div>
@@ -139,4 +127,4 @@ class Best_Deal extends Component {
         );
     }
 }
-export default Best_Deal;
+export default Featured_Product;

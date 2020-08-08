@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {PostData} from '../../services/PostData';
+import { PostData } from '../../services/PostData';
 import NumericInput from 'react-numeric-input';
 import $ from 'jquery';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { withSwalInstance } from 'sweetalert2-react';
-import swal from 'sweetalert2';
-
-const SweetAlert = withSwalInstance(swal);
+import Swal from 'sweetalert2';
 
 class Cart extends Component {
     constructor(props) {
@@ -18,8 +15,7 @@ class Cart extends Component {
         this.state = {
             cartItems: [],
             productDetails: [],
-            cartDetails: [],
-            alert: null
+            cartDetails: []
         };
         this.getCartItems = this.getCartItems.bind(this);
         this.getProductDetails = this.getProductDetails.bind(this);
@@ -32,14 +28,15 @@ class Cart extends Component {
     }
     componentWillMount() {
         this.getCartItems();
-        this.addQtyDetailsToSession();
+        // this.addQtyDetailsToSession();
     }
 
     getCartItems() {
         let items = sessionStorage.getItem("cart");
-        if(items != null) {
-            let cart_array = items.split(',');
-            this.setState({cartItems: cart_array});
+        if (items != null && items != '') {
+            let cart_array = JSON.parse(sessionStorage.getItem("cart"));
+            this.setState({ cartItems: cart_array });
+            console.log("ca", cart_array);
             this.getProductDetails(cart_array);
         }
     }
@@ -49,83 +46,99 @@ class Cart extends Component {
             if (responseJson1.feedData) {
                 console.log(`responseJson1.feedData: `, responseJson1.feedData);
 
-                this.setState({productDetails: responseJson1.feedData});
+                this.setState({ productDetails: responseJson1.feedData });
 
                 let cartDetailsArr = [];
-                responseJson1.feedData.map(function (item, index) {
-
+                responseJson1.feedData.map(function (result, index) {
                     let arr = {};
 
-                    arr['id'] = item.id;
-                    arr['name'] = item.name;
-                    arr['qty'] = 1;
-                    arr['amount'] = item.price;
+                    let price = result.product.price;
+                    let discount = result.product.discount;
+                    let new_price = price - (price * discount / 100);
 
+                    arr['id'] = result.product.id;
+                    arr['name'] = result.product.name;
+                    arr['qty'] = result.qty;
+                    arr['amount'] = new_price * result.qty;
+                    arr['shipping_fee'] = result.product.shipping_fee;
+                    console.log("111:", arr);
                     cartDetailsArr.push(arr);
                 }, this);
 
-                this.setState({cartDetails: cartDetailsArr});
+                this.setState({ cartDetails: cartDetailsArr });
             }
         });
     }
     calculatePrice = (new_qty, price, id) => {
-        let new_price = price*new_qty;
-        $('#amount-' + id).html('Rs. ' + new_price);
-        $('#amount-' + id).attr('price', new_price);
+        let new_price = price * new_qty;
+        $('#amount-' + id).html('Rs. ' + new Intl.NumberFormat().format(new_price));
+        $('#amount-' + id).attr('price', price);
+        $('#amount-' + id).attr('qty', new_qty);
     }
     onClickUpdateCartButton(event) {
-      this.calculateTotalPrice();
-      this.addQtyDetailsToSession();
-   }
+        this.calculateTotalPrice();
+        this.addQtyDetailsToSession();
+    }
     calculateTotalPrice() {
 
         let tot = 0;
-        $('.item-amount').each(function(){
-            tot += parseFloat($(this).attr('price'));
+        let shipping_fee = 0;
+        $('.item-amount').each(function () {
+            let price = parseFloat($(this).attr('price'));
+            let qty = parseInt($(this).attr('qty'));
+            let new_price = price * qty;
+            tot += new_price;
+            shipping_fee += parseFloat($(this).attr('shipping_fee'));
         });
-        $('#subtotal-amount').html('Rs. ' + tot);
-        $('#total-amount').html('Rs. ' + tot);
+        $('#subtotal-amount').html('Rs. ' + new Intl.NumberFormat().format(tot));
+        $('#total-amount').html('Rs. ' + new Intl.NumberFormat().format(tot + shipping_fee));
 
-        const getAlert = () => (
-            <SweetAlert
-                show="true"
-                title="Success"
-                text="Cart was updated successfully."
-                type= "success"
-              />
-        );
-        this.setState({
-             alert: getAlert()
-         });
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            text: 'Cart was updated successfully.',
+            showConfirmButton: false,
+            timer: 1500
+        })
 
     }
     addQtyDetailsToSession() {
 
         let cartDetailsArr = [];
-        $('.tr_cart_item').each(function(){
+        let cart = [];
+
+        $('.tr_cart_item').each(function () {
             let arr = {};
+            let cart_arr = {};
 
             let id = $(this).attr('item-id');
             let name = $(this).attr('item-name');
             let qty = $('.tr_cart_item #qty-' + id).val();
             let amount = $('.tr_cart_item #amount-' + id).attr('price');
+            let shipping_fee = $('.tr_cart_item #shipping-fee-' + id).attr('fee');
 
             arr['id'] = id;
             arr['name'] = name;
             arr['qty'] = qty;
             arr['amount'] = amount;
+            arr['shipping_fee'] = shipping_fee;
             cartDetailsArr.push(arr);
 
+            cart_arr = { id: id, qty: qty };
+            cart.push(cart_arr);
         });
-        this.setState({cartDetails: cartDetailsArr});
-
+        console.log("cart", cart);
+        // sessionStorage.setItem("cart",'');
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        this.getCartItems();
+        this.setState({ cartDetails: cartDetailsArr });
     }
     removeItemFromCart = (id) => {
 
-        let items = sessionStorage.getItem("cart");
-        let cart_array = items.split(',');
-        cart_array = cart_array.filter(item => item !== id);
-        sessionStorage.setItem("cart", cart_array);
+        let cart_array = JSON.parse(sessionStorage.getItem("cart"));
+        let cart_array1 = cart_array.filter(item => item.id !== id);
+        console.log(cart_array1);
+        sessionStorage.setItem("cart", JSON.stringify(cart_array1));
         let count = $('#header-cart').attr('items');
         let new_item_count = parseInt(count) - 1;
         sessionStorage.setItem("cart_count", new_item_count);
@@ -133,151 +146,143 @@ class Cart extends Component {
         $('#header-cart').text(new_item_count);
         $('#remove-item-' + id).remove();
 
-        const getAlert = () => (
-            <SweetAlert
-                show="true"
-                title="Success"
-                text="product was successfully removed from the cart."
-                type= "success"
-              />
-        );
-        this.setState({
-             alert: getAlert()
-         });
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            text: 'product was successfully removed from the cart.',
+            showConfirmButton: false,
+            timer: 1500
+        })
 
 
     }
 
     render() {
         let tot = 0;
+        let shipping_fee = 0;
+        console.log("33#", this.state.productDetails);
         let cartItems = this.state.productDetails
-                        .map(function (item, index) {
-                            tot += parseFloat(item.price);
+            .map(function (item, index) {
+                let price = item.product.price;
+                let discount = item.product.discount;
+                let new_price = price - (price * discount / 100);
+                tot += parseFloat(new_price * item.qty);
+                shipping_fee += parseFloat(item.product.shipping_fee);
 
-        return (
-            <tr className="cart_item tr_cart_item" id={`remove-item-${item.id}`} item-id={item.id} item-name={item.name} each-price={item.price}>
-                <td className="product-remove">
-                    <a className="remove" id={`remove-item-${item.id}`}  onClick={() => this.removeItemFromCart(item.id)}><i className="fa fa-times"></i></a>
-                    {this.state.alert}
-                </td>
-                <td className="product-thumbnail">
-                    <a href="#"><img  src={`upload/product/thumb/${item.image_name}`} alt=""/></a>
-                </td>
-                <td className="product-name">
-                    <a href="#">{item.name}</a>
-                </td>
-                <td className="product-price">
-                    <span className="amount">Rs. {item.price}</span>
-                </td>
-                <td className="product-quantity">
-                    <div className="info-qty">
-                    <NumericInput id={`qty-${item.id}`} min={1} max={10} value={1} data-price={item.price} onChange={value => this.calculatePrice(value, item.price, item.id)} mobile />
+                return (
+                    <tr className="cart_item tr_cart_item" id={`remove-item-${item.product.id}`} item-id={item.product.id} item-name={item.product.name} each-price={item.product.price}>
+                        <td className="product-remove">
+                            <a className="remove" id={`remove-item-${item.product.id}`} onClick={() => this.removeItemFromCart(item.product.id)}><i className="fa fa-times"></i></a>
+                            {this.state.alert}
+                        </td>
+                        <td className="product-thumbnail">
+                            <a href="#"><img src={`upload/product/thumb/${item.product.image_name}`} alt="" /></a>
+                        </td>
+                        <td className="product-name">
+                            <a href="#">{item.product.name}</a>
+                        </td>
+                        <td className="product-price text-right">
+                            <span className="amount">Rs. {new Intl.NumberFormat().format(new_price)}</span>
+                        </td>
+                        <td className="product-quantity">
+                            <div className="info-qty">
+                                <NumericInput id={`qty-${item.product.id}`} min={1} max={10} value={item.qty} data-price={item.product.price} onChange={value => this.calculatePrice(value, new_price, item.product.id)} mobile />
 
-                    </div>
-                </td>
-                <td className="product-subtotal">
-                        <span className="item-amount" id={`amount-${item.id}`} price={item.price}>Rs. {item.price}</span>
-                </td>
-            </tr>
+                            </div>
+                        </td>
+                        <td className="product-subtotal text-right">
+                            <span className="item-amount" id={`amount-${item.product.id}`} price={new_price} qty={item.qty} shipping_fee={item.product.shipping_fee}>Rs. {new Intl.NumberFormat().format(new_price * item.qty)}</span>
+                        </td>
+                        <input type="hidden" id={`shipping-fee-${item.product.id}`} fee={item.product.shipping_fee} />
+                    </tr>
                 );
-}, this);
-    const location = {
-        pathname: '/checkout',
-        state: { details: this.state.cartDetails }
-      }
+            }, this);
+        const location = {
+            pathname: '/checkout',
+            state: { details: this.state.cartDetails }
+        }
         return (
-<div className="">
-                    <Header />
-                    <section id="subheader">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 ">
-                                    <div class="col-md-6 div-big-heading">
-                                        <h1 class="big-heading">
-                                            Cart
+            <div className="">
+                <Header />
+                <section id="subheader">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12 ">
+                                <div className="col-md-6 div-big-heading">
+                                    <h1 className="big-heading">
+                                        Cart
                                         </h1>
-                                    </div>
-                                    <div class="col-md-6 div-p">
-                                        <p><a href="./">Home</a> | Cart</p>
+                                </div>
+                                <div className="col-md-6 div-p">
+                                    <p><a href="./">Home</a> | Cart</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div id="content">
+                    <div className="content-page woocommerce">
+                        <div className="container">
+                            <div className="cart-content-page">
+                                <h2 className="title-shop-page">my cart</h2>
+                                <div className="table-responsive">
+                                    <table cellspacing="0" className="shop_table cart table">
+                                        <thead>
+                                            <tr>
+                                                <th className="product-remove">&nbsp;</th>
+                                                <th className="product-thumbnail">&nbsp;</th>
+                                                <th className="product-name">Product</th>
+                                                <th className="product-price">Price</th>
+                                                <th className="product-quantity">Quantity</th>
+                                                <th className="product-subtotal">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {cartItems}
+                                            <tr>
+                                                <td className="actions" colspan="6">
+
+                                                    <button className="update-cart" onClick={this.onClickUpdateCartButton}>Update Cart</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div className="cart-collaterals">
+                                    <div className="cart_totals ">
+                                        <h2>Cart Totals</h2>
+                                        <div className="table-responsive">
+                                            <table cellspacing="0" className="table">
+                                                <tbody>
+                                                    <tr className="cart-subtotal">
+                                                        <th>Subtotal</th>
+                                                        <td className="text-right"><strong className="amount" id="subtotal-amount">Rs. {new Intl.NumberFormat().format(tot)}</strong></td>
+                                                    </tr>
+                                                    <tr className="shipping">
+                                                        <th>Shipping Fee</th>
+                                                        <td className="text-right"><strong className="amount" id="shipping-fee">Rs. {new Intl.NumberFormat().format(shipping_fee)}</strong></td>
+                                                    </tr>
+                                                    <tr className="order-total">
+                                                        <th>Total</th>
+                                                        <td className="text-right"><strong><span className="amount" id="total-amount">Rs. {new Intl.NumberFormat().format(tot + shipping_fee)}</span></strong> </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div className="wc-proceed-to-checkout">
+                                            <Link className="checkout-button button alt wc-forward" to={location}>Proceed to Checkout</Link>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-               <div id="content">
-		<div className="content-page woocommerce">
-			<div className="container">
-				<div className="cart-content-page">
-					<h2 className="title-shop-page">my cart</h2>
-						<div className="table-responsive">
-							<table cellspacing="0" className="shop_table cart table">
-								<thead>
-									<tr>
-										<th className="product-remove">&nbsp;</th>
-										<th className="product-thumbnail">&nbsp;</th>
-										<th className="product-name">Product</th>
-										<th className="product-price">Price</th>
-										<th className="product-quantity">Quantity</th>
-										<th className="product-subtotal">Total</th>
-									</tr>
-								</thead>
-								<tbody>
-									{cartItems}
-									<tr>
-										<td className="actions" colspan="6">
-
-                                                                                        <button className="update-cart" onClick={this.onClickUpdateCartButton}>Update Cart</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-
-					<div className="cart-collaterals">
-						<div className="cart_totals ">
-							<h2>Cart Totals</h2>
-							<div className="table-responsive">
-								<table cellspacing="0" className="table">
-									<tbody>
-										<tr className="cart-subtotal">
-											<th>Subtotal</th>
-											<td><strong className="amount" id="subtotal-amount">Rs. {tot}</strong></td>
-										</tr>
-										<tr className="shipping">
-											<th>Delivery</th>
-											<td>
-												<ul id="shipping_method">
-													<li>
-														<input type="radio" className="shipping_method" value="local_delivery" id="shipping_method_0_local_delivery" data-index="0" name="shipping_method[0]" />
-														<label for="shipping_method_0_local_delivery">Local Delivery (Free)</label>
-													</li>
-													<li>
-														<input type="radio" className="shipping_method" value="local_pickup" id="shipping_method_0_local_pickup" data-index="0" name="shipping_method[0]" />
-														<label for="shipping_method_0_local_pickup">Local Pickup (Free)</label>
-													</li>
-												</ul>
-											</td>
-										</tr>
-										<tr className="order-total">
-											<th>Total</th>
-											<td><strong><span className="amount"id="total-amount">Rs. {tot}</span></strong> </td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div className="wc-proceed-to-checkout">
-                                                        <Link className="checkout-button button alt wc-forward" to={location}>Proceed to Checkout</Link>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-        <Footer />
+                    </div>
+                </div>
+                <Footer />
             </div>
-                );
+        );
     }
 }
 export default Cart;
