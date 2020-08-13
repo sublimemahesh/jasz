@@ -9,226 +9,312 @@ and open the template in the editor.
 */
 
 .My-Account .card-thumbnail.rounded sq-150 {
-    margin-top:  0px!important; padding: 20px;
+    margin-top: 0px !important;
+    padding   : 20px;
 }
+
 .My-Account .card-thumbnail.rounded sq-150 .img-responsive {
     border-radius: 6px;
 }
+
 .My-Account .card-body .table-responsive .table-middle {
-    margin-top: 5px;
+    margin-top   : 5px;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size    : 14px;
 }
+
 .My-Account .row.gutter-xs {
     margin-top: 10%;
 }
-.My-Account .navbar::after, .navbar::before {
+
+.My-Account .navbar::after,
+.navbar::before {
     content: none;
 }
+
 .My-Account .navbar-nav .title-bar {
-    left: 263px;
+    left    : 263px;
     position: absolute;
 }
+
 .My-Account .navbar-default {
     padding-left: 0;
 }
+
 .My-Account .navbar {
     margin-bottom: 0px;
 }
+
 .My-Account .navbar-toggleable {
-    width: 82%;
+    width      : 82%;
     margin-left: 0px;
-    height: 60px;
+    height     : 60px;
+    background : #000;
 }
+
 .My-Account .layout-footer {
     position: fixed;
 }
+
 .My-Account .navbar-default {
-    background-color: #fff;
+    background-color: #13120d;
 }
+
 .My-Account .card-thumbnail img {
     border-radius: 10px;
-    height: 230px;
-    width: auto;
+    height       : 230px;
+    width        : auto;
 }
+
 .My-Account .card-thumbnail[class*="sq-"] {
     margin-top: 0;
-    padding: 13px 0;
+    padding   : 13px 0;
 }
+
 .My-Account .sidenav {
     margin-top: 70px;
 }
+
 .My-Account .card {
     margin-top: 00px;
 }
+
 .My-Account .table-responsive {
-    border-top: 1px solid #eee; 
+    border-top: 1px solid #eee;
 }
+
 .My-Account .table-responsive.tbl-res {
-    border-top: 0px; 
+    border-top: 0px;
 }
+
 .My-Account .order-card-title {
-    font-size: 25px;
+    font-size    : 25px;
     margin-bottom: 25px;
-    color: #000;
+    color        : #000;
 }
+
 .My-Account .navbar-brand-logo {
-    height: 46px;
-    width: auto;
+    height: 60px;
+    width : auto;
+    margin: auto;
 }
+
 .My-Account .navbar-brand {
-    float: left;
-    padding: 5px 15px;
-    font-size: 18px;
+    float      : left;
+    padding    : 5px 15px;
+    font-size  : 18px;
     line-height: 70px;
-    height: 100%;
-    width: 100%;
+    height     : 100%;
+    width      : 100%;
 
 }
+
 .My-Account .card.order-card {
     margin-top: 100px;
 
 }
+
 .My-Account .navbar {
     padding: 0;
 }
+
 .My-Account #form-data .form.form-horizontal {
     padding: 30px;
 }
+
 .My-Account .sidenav-label {
-    font-size: 16px;
+    font-size  : 16px;
     font-weight: 600;
 }
+
 .My-Account h6.media-heading {
-    font-size: 13px;
+    font-size  : 13px;
     font-weight: 600;
 }
+
 .My-Account .bg-primary {
     background-color: #f7a033;
-    border-color: #0071ea;
-    color: #fff;
+    border-color    : #0071ea;
+    color           : #fff;
 }
+
 .My-Account .bg-info {
     background-color: #1976d2;
-    border-color: #019eb7;
-    color: #fff;
+    border-color    : #019eb7;
+    color           : #fff;
 }
+
 .My-Account .d-ib {
-    font-weight: 600;
+    font-weight   : 400;
     text-transform: uppercase;
 
 }
+
 .My-Account .navbar-right {
     margin-top: 10px;
 }
+
 .My-Account .row.gutter-xs.member-details {
     margin-top: 5%;
 }
+
 .My-Account .toggle-mobile-menu {
-    display: block;
-    height: 40px;
+    display    : block;
+    height     : 40px;
     line-height: 40px;
 }
+
 .My-Account .toggle-mobile-menu {
-    display: none;
+    display : none;
     position: relative;
-    right: 16px;
-    top: 10px;
+    right   : 16px;
+    top     : 10px;
 }
-.My-Account .toggle-mobile-menu > span {
-    color: #333;
-    display: block;
-    font-weight: 700;
-    margin-left: -30px;
+
+.My-Account .toggle-mobile-menu>span {
+    color         : #333;
+    display       : block;
+    font-weight   : 700;
+    margin-left   : -30px;
     text-transform: uppercase;
 }
+
 .My-Account .toggle-mobile-menu::after {
-    background: #31572e none repeat scroll 0 0;
-    content: "\F0C9";
-    position: absolute;
+    background : #74bc21 none repeat scroll 0 0;
+    content    : "\F0C9";
+    position   : absolute;
     font-family: fontawesome;
-    color: #fff;
-    width: 50px;
-    height: 40px;
-    text-align: center;
+    color      : #fff;
+    width      : 50px;
+    height     : 40px;
+    text-align : center;
     line-height: 40px;
-    top: 0;
-    right: 0;
+    top        : 0;
+    right      : 0;
 }
+
 .My-Account .visible-xs {
     display: none;
 }
+
 .My-Account #order-product-details {
     margin-top: 20px;
 }
+
 .My-Account .addcart-link.view-btn {
-    padding: 5px 8px;
-    color: #fff;
+    padding         : 5px 8px;
+    color           : #fff;
     background-color: #ff9800;
-    border-radius: 3px;
-    border: 0;
-} 
+    border-radius   : 3px;
+    border          : 0;
+}
+
 .My-Account .addcart-link.view-btn:hover {
-    padding: 5px 8px;
-    color: #fff;
+    padding         : 5px 8px;
+    color           : #fff;
     background-color: #ff9800;
-    border-radius: 3px;
-    border: 0;
-} 
+    border-radius   : 3px;
+    border          : 0;
+}
+
 .My-Account .addcart-link i {
     margin-right: 0;
-} 
+}
+
 .My-Account .back-btn {
     background-color: #f7a033;
-    border-color:#f7a033;
-    color: #fff;
-    margin-top: 20px;
-    font-weight: 600;
+    border-color    : #f7a033;
+    color           : #fff;
+    margin-top      : 20px;
+    font-weight     : 600;
 }
+
 .My-Account .back-btn:hover {
     background-color: #ee8809;
-    border-color: #ee8809;
+    border-color    : #ee8809;
+    color           : #fff;
+    text-decoration : none;
+}
+
+.My-Account .layout-sidebar-backdrop {
+    background: #13120d;
+}
+
+.My-Account .sidenav.level-1>li>a:hover {
+    background: #13120d;
+}
+
+.My-Account .sidenav .icon {
     color: #fff;
+}
+
+.My-Account .sidenav-label:hover {
+    color: #fff;
+}
+.m-l-20 {
+    margin-left: 20px;
+}
+.My-Account .sidenav.level-1 > li > a:hover {
+    color: #fff;
+}
+.My-Account a:hover  {
     text-decoration: none;
 }
-.My-Account .navbar-brand-logo {
-    margin: auto;
-}
-@media (max-width: 560px){
+
+@media (max-width: 560px) {
     .My-Account .toggle-mobile-menu {
         display: block;
     }
+
     .My-Account .navbar-brand-logo {
-        height: 46px;
-        width: auto;
-        margin-top: -3px;
+        left: 6px;
+position: absolute;
+top: 0px;
+        width     : auto;
+        margin-top: 0;
     }
-    .My-Account .toggle-mobile-menu > span {
+
+    .My-Account .toggle-mobile-menu>span {
         margin-left: -54px;
     }
+
     .My-Account .layout-main {
         margin-top: 30px;
     }
+
     .My-Account .collapse.show {
         display: block;
     }
+
     .My-Account .layout-footer {
         z-index: 99;
     }
+
     .My-Account .order-card-title {
-        font-size: 20px;
+        font-size    : 20px;
         margin-bottom: 15px;
     }
+
     .My-Account .navbar-toggleable {
-        width: 21%;
+        width      : 21%;
         margin-left: 0px;
-        height: 60px;
+        height     : 60px;
+        background : #000;
     }
+
     .visible-xs {
         display: block;
+        }
+    .My-Account .sidenav {
+        background: #13120d;
+        color           : #fff;
+        margin-top: 62px;
     }
-    .My-Account .navbar-brand-logo {
-        margin-right: 84px;
+    .My-Account .card.order-card {
+        margin-top: 60px;
+    }
+    .My-Account .table-responsive.tbl-res {
+        border: 0;
     }
 }
 
@@ -236,46 +322,61 @@ and open the template in the editor.
     .My-Account .navbar-toggleable {
         /*width: 100%;*/
     }
+
     .My-Account .layout-sidebar {
         width: 220px;
     }
+
     .My-Account .layout-content-body {
         padding: 92px 15px 35px;
     }
+
     .My-Account .layout-sidebar-backdrop {
         width: 220px;
     }
+
     .My-Account .layout-content {
         margin-left: 221px;
     }
+
     .My-Account .col-md-8.col-sm-12 {
-        flex: 0 0 100%;
+        flex     : 0 0 100%;
         max-width: 100%;
     }
+
     .My-Account .sidenav-label {
-        font-size: 14px;
+        font-size  : 14px;
         font-weight: 600;
+        color      : #fff;
     }
+
     .My-Account .navbar-header {
         position: absolute;
     }
+
     .My-Account .navbar-toggleable {
-        width: 82%;
+        width      : 82%;
         margin-left: 218px;
-        height: 60px;
+        height     : 60px;
 
     }
+
     .My-Account .navbar-header {
         width: 228px;
 
     }
+
     .My-Account .card.order-card {
         margin-top: 0px;
     }
+
     .My-Account .row.gutter-xs {
         margin-top: 0;
     }
+
     .My-Account .navbar-brand-logo {
         margin: auto;
     }
+
+    
 }

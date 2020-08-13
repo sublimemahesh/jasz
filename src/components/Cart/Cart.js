@@ -9,8 +9,6 @@ import Swal from 'sweetalert2';
 
 class Cart extends Component {
     constructor(props) {
-
-        console.log(props);
         super(props);
         this.state = {
             cartItems: [],
@@ -36,7 +34,6 @@ class Cart extends Component {
         if (items != null && items != '') {
             let cart_array = JSON.parse(sessionStorage.getItem("cart"));
             this.setState({ cartItems: cart_array });
-            console.log("ca", cart_array);
             this.getProductDetails(cart_array);
         }
     }
@@ -44,7 +41,6 @@ class Cart extends Component {
         PostData('product-details-for-cart', item).then((result1) => {
             let responseJson1 = result1;
             if (responseJson1.feedData) {
-                console.log(`responseJson1.feedData: `, responseJson1.feedData);
 
                 this.setState({ productDetails: responseJson1.feedData });
 
@@ -61,7 +57,6 @@ class Cart extends Component {
                     arr['qty'] = result.qty;
                     arr['amount'] = new_price * result.qty;
                     arr['shipping_fee'] = result.product.shipping_fee;
-                    console.log("111:", arr);
                     cartDetailsArr.push(arr);
                 }, this);
 
@@ -127,7 +122,6 @@ class Cart extends Component {
             cart_arr = { id: id, qty: qty };
             cart.push(cart_arr);
         });
-        console.log("cart", cart);
         // sessionStorage.setItem("cart",'');
         sessionStorage.setItem("cart", JSON.stringify(cart));
         this.getCartItems();
@@ -137,7 +131,6 @@ class Cart extends Component {
 
         let cart_array = JSON.parse(sessionStorage.getItem("cart"));
         let cart_array1 = cart_array.filter(item => item.id !== id);
-        console.log(cart_array1);
         sessionStorage.setItem("cart", JSON.stringify(cart_array1));
         let count = $('#header-cart').attr('items');
         let new_item_count = parseInt(count) - 1;
@@ -160,7 +153,6 @@ class Cart extends Component {
     render() {
         let tot = 0;
         let shipping_fee = 0;
-        console.log("33#", this.state.productDetails);
         let cartItems = this.state.productDetails
             .map(function (item, index) {
                 let price = item.product.price;
@@ -220,7 +212,7 @@ class Cart extends Component {
                         </div>
                     </div>
                 </section>
-                <div id="content">
+                <div id="content" className="my-cart-page">
                     <div className="content-page woocommerce">
                         <div className="container">
                             <div className="cart-content-page">

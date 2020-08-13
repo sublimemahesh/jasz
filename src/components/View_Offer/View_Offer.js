@@ -26,7 +26,7 @@ class View_Offer extends Component {
         this.getAllOffers();
     }
     getAllOffers() {
-        PostData('offer').then((result) => {
+        PostData('offers-without-id', this.state.offer).then((result) => {
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -49,22 +49,22 @@ class View_Offer extends Component {
                 <div className="">
                     <Header />
                     <section id="subheader">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 ">
-                                    <div class="col-md-6 div-big-heading">
-                                        <h1 class="big-heading">
-                                            Offers
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12 ">
+                                    <div className="col-md-6 div-big-heading">
+                                        <h1 className="big-heading">
+                                        {this.state.offerDetails.title}
                                         </h1>
                                     </div>
-                                    <div class="col-md-6 div-p">
+                                    <div className="col-md-6 div-p">
                                         <p><a href="./">Home</a> | Offers</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                <div id="content">
+                <div id="content" className="view-offer-page">
                 <div className="content-shop">
                     <div className="container">
                         <div className="row">

@@ -45,7 +45,6 @@ class Home_Content extends Component {
     }
     getCategories() {
         PostData('category-and-subcategory').then((result) => {
-            console.log(result);
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -55,7 +54,6 @@ class Home_Content extends Component {
     }
     getFeaturedProducts() {
         PostData('featured-products').then((result5) => {
-            // console.log('1111:' + result5);
             let responseJson = result5;
 
             if (responseJson.feedData) {
@@ -65,7 +63,6 @@ class Home_Content extends Component {
     }
     getFeedBacks() {
         PostData('feedback').then((result1) => {
-            console.log(result1);
             let responseJson1 = result1;
 
             if (responseJson1.feedData) {
@@ -75,7 +72,6 @@ class Home_Content extends Component {
     }
     getBrands() {
         PostData('brand').then((result2) => {
-            console.log(result2);
             let responseJson2 = result2;
 
             if (responseJson2.feedData) {
@@ -85,7 +81,6 @@ class Home_Content extends Component {
     }
     getBestDealProducts() {
         PostData('best-deal-product').then((result3) => {
-            console.log(result3);
             let responseJson3 = result3;
             if (responseJson3.feedData) {
                 this.setState({ bestDealProducts: responseJson3.feedData });
@@ -94,7 +89,6 @@ class Home_Content extends Component {
     }
     getProductsByCategories() {
         PostData('products-by-categories').then((result4) => {
-            console.log(result4);
             let responseJson4 = result4;
             if (responseJson4.feedData) {
                 this.setState({ productsByCategories: responseJson4.feedData });
@@ -103,7 +97,6 @@ class Home_Content extends Component {
     }
     getBanners() {
         PostData('main-banners').then((result) => {
-            console.log(result);
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -113,44 +106,44 @@ class Home_Content extends Component {
     }
 
     render() {
-        return ( <
-            div className = "" >
+        return (<
+            div className="" >
             <
-            Header / >
+                Header />
             <
-            div id = "content" >
-            <
-            div className = "container" >
-            <
-            div className = "row" >
-            <
-            Category_Side_Bar feedData = { this.state.category }
-            /> <
-            Main_Banner feedData = { this.state.mainBanner }
-            /> <
-            Category_Side_Bar_sm feedData = { this.state.category }
-            /> <
-            Featured_Product feedData = { this.state.featuredProducts }
-            />
+            div id="content" >
+                <
+            div className="container" >
+                    <
+            div className="row" >
+                        <
+                            Category_Side_Bar feedData={this.state.category}
+                        /> <
+                            Main_Banner feedData={this.state.mainBanner}
+                        /> <
+                            Category_Side_Bar_sm feedData={this.state.category}
+                        /> <
+                            Featured_Product feedData={this.state.featuredProducts}
+                        />
 
-            <
+                        <
             /div> <
-            Privacy_Shipping / >
-            <
+                            Privacy_Shipping />
+                        <
             /div> <
-            Brands_Carousel feedData = { this.state.brands }
-            /> <
-            Best_Deal feedData = { this.state.bestDealProducts }
-            /> <
-            Popular_Categories feedData = { this.state.productsByCategories }
-            /> <
-            Testimonial feedData = { this.state.feedback }
-            /> <
-            Order_Details / >
-            <
+                            Brands_Carousel feedData={this.state.brands}
+                        /> <
+                            Best_Deal feedData={this.state.bestDealProducts}
+                        /> <
+                            Popular_Categories feedData={this.state.productsByCategories}
+                        /> <
+                            Testimonial feedData={this.state.feedback}
+                        /> <
+                            Order_Details />
+                        <
             /div> <
-            Footer / >
-            <
+                            Footer />
+                        <
             /div>
         );
     }

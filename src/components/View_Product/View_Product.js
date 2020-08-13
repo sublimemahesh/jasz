@@ -10,7 +10,6 @@ class View_Product extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             product: props.match.params.product,
             category: '',
@@ -75,7 +74,6 @@ class View_Product extends Component {
     }
     getCategoryDetails(id) {
         PostData('category-details-by-id', id).then((result3) => {
-            console.log(result3);
             let responseJson3 = result3;
             if (responseJson3.feedData) {
                 this.setState({ categoryDetails: responseJson3.feedData });
@@ -84,7 +82,6 @@ class View_Product extends Component {
     }
     getSubCategoryDetails(id) {
         PostData('sub-category-details-by-id', id).then((result4) => {
-            console.log(result4);
             let responseJson4 = result4;
             if (responseJson4.feedData) {
                 this.setState({ subCategoryDetails: responseJson4.feedData });
@@ -93,7 +90,6 @@ class View_Product extends Component {
     }
     getBrandDetails(id) {
         PostData('brand-details-by-id', id).then((result5) => {
-            console.log(result5);
             let responseJson5 = result5;
             if (responseJson5.feedData) {
                 this.setState({ brandDetails: responseJson5.feedData });
@@ -106,25 +102,25 @@ class View_Product extends Component {
             <div className="">
                 <Header />
                 <section id="subheader">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 ">
-                                <div class="col-md-6 div-big-heading">
-                                    <h1 class="big-heading">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12 ">
+                                <div className="col-md-6 div-big-heading">
+                                    <h1 className="big-heading">
                                         {this.state.productDetails.name}
                                     </h1>
                                 </div>
-                                <div class="col-md-6 div-p">
+                                <div className="col-md-6 div-p">
                                     <p><a href="./">Home</a> | Products</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <div id="content">
-                    <div class="content-shop">
-                        <div class="container">
-                            <div class="row">
+                <div id="content" className="view-product-page">
+                    <div className="content-shop">
+                        <div className="container">
+                            <div className="row">
                                 {
                                     this.state.productPhotos &&
                                     <Product_Details feedData={this.state.productDetails} photos={this.state.productPhotos} category={this.state.categoryDetails.name} subcategory={this.state.subCategoryDetails.name} brand={this.state.brandDetails.name} />

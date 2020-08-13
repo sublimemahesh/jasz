@@ -6,7 +6,6 @@ import 'font-awesome/css/font-awesome.min.css';
 import './css/application.min.css';
 import './css/elephant.min.css';
 import './css/custom.css';
-import member from '../../images/member.jpg';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -45,7 +44,6 @@ class Edit_Profile extends Component {
     }
     getMemberDetails() {
         PostData('member', this.state.member).then((result) => {
-            console.log(`result: `, result);
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -141,7 +139,6 @@ class Edit_Profile extends Component {
             return false;
         } else {
             PostData('update-member-details', data).then((result1) => {
-                console.log(`1: `, result1);
                 let responseJson1 = result1;
 
                 if (responseJson1.feedData) {
@@ -175,51 +172,53 @@ class Edit_Profile extends Component {
                     <div className="layout-content">
                         <div className="layout-content-body">
                             <div className="row gutter-xs">
-                                <div class="row col-md-12">
-                                    <div class="col-md-8 col-sm-12 col-md-offset-2">
-                                        <div class="demo-form-wrapper card " id="form-data">
-                                            <div class="form form-horizontal">
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="full_name">Full Name: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtFullName" name="full_name" class="form-control" type="text" value={this.state.full_name} onChange={e => this.setState({ full_name: e.target.value })} />
+                                <div className="row col-md-12">
+                                    <div className="col-md-8 col-sm-12 col-md-offset-2">
+                                        <div className="demo-form-wrapper card " id="form-data">
+                                            <h2 className="order-card-title m-l-20">Edit Profile</h2>
+                                            <hr />
+                                            <div className="form form-horizontal">
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="full_name">Full Name: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtFullName" name="full_name" className="form-control" type="text" value={this.state.full_name} onChange={e => this.setState({ full_name: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="email">Email: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtEmail" name="email" class="form-control" type="text" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="email">Email: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtEmail" name="email" className="form-control" type="text" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="contact_no">Contact Number: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtContactNo" name="contact_no" class="form-control" type="text" value={this.state.contact_no} onChange={e => this.setState({ contact_no: e.target.value })} />
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="contact_no">Contact Number: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtContactNo" name="contact_no" className="form-control" type="text" value={this.state.contact_no} onChange={e => this.setState({ contact_no: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="address">Address: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtAddress" name="address" class="form-control" type="text" value={this.state.address} onChange={e => this.setState({ address: e.target.value })} />
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="address">Address: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtAddress" name="address" className="form-control" type="text" value={this.state.address} onChange={e => this.setState({ address: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="city">City: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtCity" name="city" class="form-control" type="text" value={this.state.city} onChange={e => this.setState({ city: e.target.value })} />
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="city">City: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtCity" name="city" className="form-control" type="text" value={this.state.city} onChange={e => this.setState({ city: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="country">Country: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtCountry" name="country" class="form-control" type="text" value={this.state.country} onChange={e => this.setState({ country: e.target.value })} />
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="country">Country: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtCountry" name="country" className="form-control" type="text" value={this.state.country} onChange={e => this.setState({ country: e.target.value })} />
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <div class="col-md-3 col-md-offset-9">
+                                                <div className="form-group">
+                                                    <div className="col-md-3 col-md-offset-9">
                                                         <input type="hidden" name="id" value="value={this.state.member}" />
-                                                        <button class="btn btn-primary btn-block" onClick={this.updateMemberDetails}>Update</button>{this.state.alert}
+                                                        <button className="btn btn-primary btn-block" onClick={this.updateMemberDetails}>Update</button>{this.state.alert}
                                                     </div>
                                                 </div>
                                             </div>
@@ -232,7 +231,7 @@ class Edit_Profile extends Component {
                     <div className="layout-footer">
                         <div className="layout-footer-body">
                             <small className="version">Version 1.1.0</small>
-                            <small className="copyright">2020 &copy; DIGIZONE.LK   </small>
+                            <small className="copyright">2020 &copy; DEWENDRA.LK   </small>
                         </div>
                     </div>
                 </div>

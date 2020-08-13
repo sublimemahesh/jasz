@@ -186,22 +186,22 @@ class Checkout extends Component {
             <div className="">
                 <Header />
                 <section id="subheader">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 ">
-                                <div class="col-md-6 div-big-heading">
-                                    <h1 class="big-heading">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12 ">
+                                <div className="col-md-6 div-big-heading">
+                                    <h1 className="big-heading">
                                         Checkout
                                         </h1>
                                 </div>
-                                <div class="col-md-6 div-p">
+                                <div className="col-md-6 div-p">
                                     <p><a href="./">Home</a> | Checkout</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <div id="content">
+                <div id="content" className="checkout-page">
                     <div className="content-page woocommerce">
                         <div className="container">
                             <div className="row">
@@ -264,11 +264,11 @@ class Checkout extends Component {
                                                 </tfoot>
                                             </table>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xs-12 agree-check-box">
-                                                <label class="checkbox-container">Click here to indicate that you have read and agree to the booking <a href="/terms-and-conditions" target="_blank" class="text-green">terms and conditions</a>.
+                                        <div className="row">
+                                            <div className="col-xs-12 agree-check-box">
+                                                <label className="checkbox-container">Click here to indicate that you have read and agree to the booking <a href="/terms-and-conditions" target="_blank" className="text-green">terms and conditions</a>.
                                                     <input type="checkbox" name="agree" id="agree" />
-                                                    <span class="checkmark"></span>
+                                                    <span className="checkmark"></span>
                                                 </label>
                                             </div>
                                         </div>

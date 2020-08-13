@@ -106,7 +106,6 @@ class Register extends Component {
             return false;
         } else {
             PostData('register', data).then((result1) => {
-                console.log(`1: `, result1);
                 let responseJson1 = result1;
 
                 if (responseJson1.feedData.status == 'error') {
@@ -151,12 +150,12 @@ class Register extends Component {
         return (
             <div className="">
                 <Header />
-                <div id="content">
+                <div id="content" className="register-page">
                     <div className="content-page">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-10 col-sm-12 col-xs-12 col-md-offset-1">
-                                    <h2 className="title-shop-page">Sign Up</h2>
+                                    <h2 className="title-shop-page login-title">Sign Up</h2>
                                     <div className="row">
 
                                         <div className="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-ms-12">

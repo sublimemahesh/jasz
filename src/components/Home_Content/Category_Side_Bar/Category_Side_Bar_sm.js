@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import {PostData} from '../../../services/PostData';
-import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Link } from 'react-router-dom';
 
 class Category_Side_Bar extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-console.log(`this: `,this.props.feedData);
         let CategorySideBar = this.props.feedData
                 .map(function (feedData, index) {
                     const location = {
@@ -26,7 +18,7 @@ console.log(`this: `,this.props.feedData);
                                 state: { subcategory: subcategory.id }
                               }
                             return (
-                            <h2 className="title-cat-mega-menu"><Link class="addcart-link" to={location1} >{subcategory.name}</Link></h2>
+                            <h2 className="title-cat-mega-menu"><Link className="addcart-link" to={location1} >{subcategory.name}</Link></h2>
                             )
                     }, this);
 
@@ -34,7 +26,7 @@ console.log(`this: `,this.props.feedData);
                         if (feedData.have_sub == 1) {
                           return (
                           <li className="has-cat-mega">
-                            <Link class="addcart-link" to={location} >{feedData.cat_name}</Link>
+                            <Link className="addcart-link" to={location} >{feedData.cat_name}</Link>
                                 <div className="cat-mega-menu cat-mega-style1">
                                     <div className="row">
                                         <div className="col-md-12 col-sm-12">
@@ -50,7 +42,7 @@ console.log(`this: `,this.props.feedData);
                         } else {
                             return (
                               <li className="">
-                                <Link class="addcart-link" to={location} >{feedData.cat_name}</Link>
+                                <Link className="addcart-link" to={location} >{feedData.cat_name}</Link>
 
                             </li>
                             )

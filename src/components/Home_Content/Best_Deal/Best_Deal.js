@@ -4,11 +4,10 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { NavLink } from 'react-router-dom';
 
 class Best_Deal extends Component {
     constructor(props) {
-        // sessionStorage.setItem("cart", '');
-        // sessionStorage.setItem("cart_count", '');
         super(props);
         this.state = {
             responsive: {
@@ -32,8 +31,7 @@ class Best_Deal extends Component {
 
     addToCart(id) {
         let items = sessionStorage.getItem("cart");
-        let arr = [];
-        // console.log("items", JSON.parse(sessionStorage.getItem("cart")));
+        
         if (items === '' || items === null) {
 
             let arr = [{ id: id, qty: 1 }];
@@ -89,18 +87,18 @@ class Best_Deal extends Component {
                     <div className="item">
                         <div className="item-product5">
                             <div className="product-thumb product-thumb5">
-                                <a href={`/product-view/${feedData.id}`} className="product-thumb-link">
+                                <NavLink to={`/product-view/${feedData.id}`} className="product-thumb-link">
                                     <img className="first-thumb" src={`upload/product/${feedData.image_name}`} alt="" />
                                     <img className="second-thumb" src={`upload/product/${feedData.image_name2}`} alt="" />
-                                </a>
+                                </NavLink>
                                 <div className="product-info-cart">
                                     <a className="addcart-link" onClick={() => this.addToCart(feedData.id)}><i className="fa fa-shopping-basket"></i>  Add to Cart</a>
                                     {this.state.alert}
                                 </div>
                             </div>
                             <div className="product-info5">
-                                <h3 className="title-product"><a href={`/product-view/${feedData.id}`}>{feedData.name} </a></h3>
-                                <div class="info-price">
+                                <h3 className="title-product"><NavLink to={`/product-view/${feedData.id}`}>{feedData.name} </NavLink></h3>
+                                <div className="info-price">
                                     <span>{feedData.discount != 0 && feedData.discount != '' ? "Rs. " + (new Intl.NumberFormat().format(feedData.price - (feedData.price * feedData.discount / 100))) : "Rs. " + new Intl.NumberFormat().format((feedData.price))}</span>
                                     <del>{feedData.discount != 0 && feedData.discount != '' && "Rs. " + (new Intl.NumberFormat().format(feedData.price))}</del>
                                 </div>

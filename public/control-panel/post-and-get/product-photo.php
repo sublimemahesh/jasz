@@ -28,8 +28,22 @@ if (isset($_POST['create'])) {
         $handle->image_ratio_crop = 'C';
         $handle->image_watermark = '../../img/logo/logo-watermark.png';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 600;
-        $handle->image_y = 400;
+        // $handle->image_x = 1500;
+        // $handle->image_y = 900;
+        $image_dst_x = $handle->image_dst_x;
+        $image_dst_y = $handle->image_dst_y;
+        if ($image_dst_y > 900) {
+            $newSize = Helper::calImgResize(900, $image_dst_x, $image_dst_y);
+
+            $image_x = (int) $newSize[0];
+            $image_y = (int) $newSize[1];
+
+            $handle->image_x = $image_x;
+            $handle->image_y = $image_y;
+        } else {
+            $handle->image_x = $image_dst_x;
+            $handle->image_y = $image_dst_y;
+        }
 
         $handle->Process($dir_dest);
 
@@ -103,8 +117,22 @@ if (isset($_POST['update'])) {
         $handle->image_ratio_crop = 'C';
         $handle->image_watermark = '../../img/logo/logo-watermark.png';
         $handle->file_new_name_body = $img;
-        $handle->image_x = 1000;
-        $handle->image_y = 600;
+        // $handle->image_x = 1500;
+        // $handle->image_y = 900;
+        $image_dst_x = $handle->image_dst_x;
+        $image_dst_y = $handle->image_dst_y;
+        if ($image_dst_y > 900) {
+            $newSize = Helper::calImgResize(900, $image_dst_x, $image_dst_y);
+
+            $image_x = (int) $newSize[0];
+            $image_y = (int) $newSize[1];
+
+            $handle->image_x = $image_x;
+            $handle->image_y = $image_y;
+        } else {
+            $handle->image_x = $image_dst_x;
+            $handle->image_y = $image_dst_y;
+        }
 
         $handle->Process($dir_dest);
 

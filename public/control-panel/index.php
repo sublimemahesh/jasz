@@ -55,7 +55,7 @@ $COUNT_ORDERS = count(Order::all());
                     <h2>DASHBOARD</h2> </div>
                 <!-- Widgets -->
                 <div class="row clearfix">
-                    <a href="create-product.php">
+                    <a href="manage-products.php">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon"> <i class="material-icons">photo</i> </div>
@@ -111,10 +111,10 @@ $COUNT_ORDERS = count(Order::all());
                             </div>
                             <div class="body">
                                 <div class="list-group">
-                                    <a href="view-products.php">
+                                    <a href="create-product.php">
                                         <button type="button" class="list-group-item">Add new</button>
                                     </a>
-                                    <a href="view-products.php">
+                                    <a href="manage-products.php">
                                         <button type="button" class="list-group-item">Manage</button>
                                     </a>
                                     <a href="arrange-products.php">

@@ -37,7 +37,7 @@ class Featured_Product extends Component {
 
             let arr = [{ id: id, qty: 1 }];
             sessionStorage.setItem("cart", JSON.stringify(arr));
-            console.log("items", JSON.parse(sessionStorage.getItem("cart")));
+            // console.log("items", JSON.parse(sessionStorage.getItem("cart")));
             let count = $('#header-cart').attr('items');
             let new_item_count = parseInt(count) + 1;
             sessionStorage.setItem("cart_count", new_item_count);
@@ -99,8 +99,8 @@ class Featured_Product extends Component {
                                 </div>
                             </div>
                             <div className="product-info5">
-                                <h3 className="title-product"><a href={`/product-view/${feedData.id}`}>{feedData.name} </a></h3>
-                                <div class="info-price">
+                                <h3 className="title-product"><NavLink to={`/product-view/${feedData.id}`}>{feedData.name} </NavLink></h3>
+                                <div className="info-price">
                                     <span>{feedData.discount != 0 && feedData.discount != '' ? "Rs. " + (new Intl.NumberFormat().format(feedData.price - (feedData.price * feedData.discount / 100))) : "Rs. " + new Intl.NumberFormat().format((feedData.price))}</span>
                                     <del>{feedData.discount != 0 && feedData.discount != '' && "Rs. " + (new Intl.NumberFormat().format(feedData.price))}</del>
                                 </div>

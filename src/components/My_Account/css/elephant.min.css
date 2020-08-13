@@ -4321,8 +4321,8 @@ fieldset[disabled] .btn-link:hover {
 }
 
 .My-Account .navbar-default {
-    background-color: #f6f9fa;
-    border-color: #ebf1f4
+    background-color: #13120d;
+    border-color: #13120d
 }
 
 .My-Account .navbar-default .navbar-brand {
@@ -11705,7 +11705,7 @@ to {
 }
 
 .My-Account .layout-header {
-    background-color: #f6f9fa;
+    background-color: #13120d;
     -webkit-box-shadow: none;
     box-shadow: none;
     left: 0;
@@ -12515,11 +12515,11 @@ fieldset[disabled] .md-form-group .md-form-control {
 }
 
 .My-Account .sidenav>li>a {
-    color: #7d7d8e;
+    color: #fff;
     display: block;
     font-size: 13px;
     line-height: 18px;
-    padding: 25px 15px;
+    padding: 15px 15px;
     position: relative;
     text-decoration: none;
     -webkit-transition: all .3s;
@@ -14838,7 +14838,8 @@ a.arrow-left.arrow-warning:hover:before {
 }
 
 .My-Account .d-ib {
-    display: inline-block
+    display: inline-block;
+    color: #fff;
 }
 
 .My-Account .d-tb {

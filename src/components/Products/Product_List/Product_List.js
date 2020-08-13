@@ -1,7 +1,6 @@
 import React, { Component }
     from 'react';
 import Swal from 'sweetalert2';
-import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import { PostData } from '../../../services/PostData';
 import Product_Item from './Product_Item/Product_Item';
@@ -114,9 +113,10 @@ class Product_List extends Component {
             <div className="wrap-item1">
                 <div className="row col-md-12 prod-list">
                     {this.state.categoryDetails && this.state.subCategoryDetails && this.state.brandDetails &&
+                    this.props.feedData.length ?
                         this.props.feedData.map((feedData) =>
                             <Product_Item feedData={feedData} alert={this.state.alert} addToCart={this.addToCart} categories={this.state.categoryDetails} subcategories={this.state.subCategoryDetails} brands={this.state.brandDetails} />
-                        )
+                        )  : <h4 className="m-l-20 m-b-30">Search result is empty.</h4>
                     }
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PostData } from '../../../services/PostData';
+import { NavLink } from 'react-router-dom';
 
 class Other_Products extends Component {
     constructor(props) {
@@ -8,10 +9,8 @@ class Other_Products extends Component {
     }
     getBrandDetails(id) {
         PostData('brand-details-by-id', id).then((result5) => {
-            console.log(result5);
             let responseJson5 = result5;
             if (responseJson5.feedData) {
-                console.log("responseJson5.feedData.name:", responseJson5.feedData.name);
                 return responseJson5.feedData.name;
             }
         });
@@ -22,14 +21,14 @@ class Other_Products extends Component {
             Product_List = this.props.feedData
                 .map(function (feedData, index) {
                     return (
-                        <li class="clearfix">
-                            <div class="product-related-thumb">
-                                <a href={`/product-view/${feedData.id}`}><img className="first-thumb" alt="" src={`../upload/product/thumb/${feedData.image_name}`} /></a>
+                        <li className="clearfix">
+                            <div className="product-related-thumb">
+                                <NavLink to={`/product-view/${feedData.id}`}><img className="first-thumb" alt="" src={`../upload/product/thumb/${feedData.image_name}`} /></NavLink>
                             </div>
-                            <div class="product-related-info">
-                                <h3 class="title-product"><a href={`/product-view/${feedData.id}`}>{feedData.name}</a></h3>
+                            <div className="product-related-info">
+                                <h3 className="title-product"><NavLink to={`/product-view/${feedData.id}`}>{feedData.name}</NavLink></h3>
                                 {/* <span>Brand: {this.getBrandDetails(feedData.id)}</span> */}
-                                <div class="info-price">
+                                <div className="info-price">
                                     <span>{feedData.discount != 0 && feedData.discount != '' ? "Rs. " + (new Intl.NumberFormat().format(feedData.price - (feedData.price * feedData.discount / 100))) : "Rs. " + new Intl.NumberFormat().format((feedData.price))}</span><br />
                                     <del>{feedData.discount != 0 && feedData.discount != '' && "Rs. " + (new Intl.NumberFormat().format(feedData.price))}</del>
                                 </div>
@@ -39,16 +38,16 @@ class Other_Products extends Component {
                     )
                 }, this);
         } else {
-            Product_List = 'No any products in the database.';
+            Product_List = 'Search result is empty.';
 
         }
 
         return (
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="sidebar-shop sidebar-left">
-                    <div class="widget widget-related-product">
-                        <h2 class="widget-title">RELATED PRODUCTS</h2>
-                        <ul class="list-product-related">
+            <div className="col-md-3 col-sm-6 col-xs-12">
+                <div className="sidebar-shop sidebar-left">
+                    <div className="widget widget-related-product">
+                        <h2 className="widget-title">RELATED PRODUCTS</h2>
+                        <ul className="list-product-related">
                             {Product_List}
                         </ul>
                     </div>

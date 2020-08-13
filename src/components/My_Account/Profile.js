@@ -7,6 +7,7 @@ import './css/application.min.css';
 import './css/elephant.min.css';
 import './css/custom.css';
 import member from '../../images/member.jpg';
+import { NavLink } from 'react-router-dom';
 
 class Profile extends Component {
     constructor(props) {
@@ -46,7 +47,6 @@ class Profile extends Component {
     }
     getMemberDetails() {
         PostData('member', this.state.member).then((result) => {
-            console.log(`result: `, result );
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -56,7 +56,6 @@ class Profile extends Component {
     }
     getPendingOrderCountByMember() {
         PostData('get-pending-orders-by-member', this.state.member).then((result1) => {
-            console.log(`result: `, result1 );
             let responseJson1 = result1;
 
             if (responseJson1.feedData) {
@@ -66,7 +65,6 @@ class Profile extends Component {
     }
     getConfirmedOrderCountByMember() {
         PostData('get-confirmed-orders-by-member', this.state.member).then((result) => {
-            console.log(`result: `, result );
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -76,7 +74,6 @@ class Profile extends Component {
     }
      getCanceledOrderCountByMember() {
         PostData('get-canceled-orders-by-member', this.state.member).then((result) => {
-            console.log(`result: `, result );
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -86,7 +83,6 @@ class Profile extends Component {
     }
     getSuccessOrderCountByMember() {
         PostData('get-success-orders-by-member', this.state.member).then((result) => {
-            console.log(`result: `, result );
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -106,6 +102,7 @@ class Profile extends Component {
                 <div className="layout-content-body">
                 <div className="row gutter-xs">
                         <div className="col-md-6 col-lg-3 col-lg-push-0">
+                            <NavLink to={`pending-orders`}>
                             <div className="card bg-primary">
                                 <div className="card-body">
                                     <div className="media">
@@ -123,8 +120,10 @@ class Profile extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </NavLink>
                         </div>
                         <div className="col-md-6 col-lg-3 col-lg-push-3">
+                        <NavLink to={`confirmed-orders`}>
                             <div className="card bg-info">
                                 <div className="card-body">
                                     <div className="media">
@@ -142,8 +141,10 @@ class Profile extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </NavLink>
                         </div>
                         <div className="col-md-6 col-lg-3 col-lg-pull-3">
+                        <NavLink to={`success-orders`}>
                             <div className="card bg-info">
                                 <div className="card-body">
                                     <div className="media">
@@ -161,8 +162,10 @@ class Profile extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </NavLink>
                         </div>
                         <div className="col-md-6 col-lg-3 col-lg-pull-0">
+                        <NavLink to={`canceled-orders`}>
                             <div className="card bg-warning">
                                 <div className="card-body">
                                     <div className="media">
@@ -180,6 +183,7 @@ class Profile extends Component {
                                     </div>
                                 </div>
                             </div>
+                            </NavLink>
                         </div>
                     </div>
 
@@ -280,7 +284,7 @@ class Profile extends Component {
             <div className="layout-footer">
                 <div className="layout-footer-body">
                     <small className="version">Version 1.1.0</small>
-                    <small className="copyright">2020 &copy; DIGIZONE.LK   </small>
+                    <small className="copyright">2020 &copy; DEWENDRA.LK   </small>
                 </div>
             </div>
         </div>
