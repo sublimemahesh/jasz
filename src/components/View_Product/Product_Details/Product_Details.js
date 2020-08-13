@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import ImageGallery from 'react-image-gallery';
+import { Tab } from 'react-tabs';
 import "react-image-gallery/styles/css/image-gallery.css";
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 import NumericInput from 'react-numeric-input';
-// import ReactImageMagnify from 'react-image-magnify';
 import SliderImage from 'react-zoom-slider';
 
 class Product_Details extends Component {
@@ -29,7 +26,6 @@ class Product_Details extends Component {
             productID: nextProps.feedData.id,
             discount: nextProps.feedData.discount
         });
-        console.log(`123 `, this.state);
     }
     addToCart() {
 

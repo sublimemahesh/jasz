@@ -31,7 +31,7 @@ class Terms_And_Conditions extends Component {
                             </div>
                         </div>
                     </section>
-                <div id="content">
+                <div id="content" className="terms-and-condition-page">
                     <div className="content-page">
 			<div className="container">
                             <div className="row">

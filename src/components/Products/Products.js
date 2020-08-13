@@ -113,10 +113,8 @@ class Products extends Component {
     getProductsByBrand() {
         // console.log(`this.state.brand: `, this.state.brand);
         PostData('products-by-brand', this.state.brand).then((result5) => {
-            console.log(result5);
             let responseJson5 = result5;
             if (responseJson5.feedData) {
-                // console.log(`responseJson5.feedData : `, responseJson5.feedData);
 
                 this.setState({ products: responseJson5.feedData });
             }
@@ -239,7 +237,6 @@ class Products extends Component {
                     { value: brand.id, label: brand.name }
                 )
             }, this);
-            console.log("selectedOption1: ", selectedOption1);
         const { selectedOption } = this.state;
         const { selectedOption1 } = this.state;
         return (

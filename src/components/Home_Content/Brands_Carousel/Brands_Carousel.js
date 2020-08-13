@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Brands_Carousel extends Component {
     constructor(props) {
@@ -35,7 +35,7 @@ render() {
 return (
                 <div className="item-pop-cat">
                     <div className="zoom-image-thumb">
-                        <Link class="addcart-link" to={location} ><img src={`upload/brand/${feedData.image_name}`} alt="" /></Link>
+                        <NavLink className="addcart-link" to={location} ><img src={`upload/brand/${feedData.image_name}`} alt="" /></NavLink>
                     </div>
                     <h2 className="pop-cat-title">{feedData.name}</h2>
                 </div>

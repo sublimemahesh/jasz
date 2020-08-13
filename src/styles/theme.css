@@ -575,7 +575,6 @@ a:focus {
     background: #999;
     width     : 100%;
     left      : 0;
-    top       : ;
 }
 
 .qty-product {
@@ -3507,6 +3506,7 @@ a:focus {
     padding   : 20px;
     border    : 1px solid #63935f52;
     background: #dee8de;
+    text-align: center;
 }
 
 .size-chart {
@@ -3681,6 +3681,7 @@ a:focus {
     border    : 1px solid #e8e8e8;
     display   : table;
     margin-top: -1px;
+    width: 100%;
 }
 
 .title-table-detail {
@@ -3703,7 +3704,7 @@ a:focus {
 .info-table-detail {
     color  : #666;
     display: table-cell;
-    padding: 30px 0 30px 30px;
+    padding: 30px 30px 30px 30px;
 }
 
 .info-table-detail p {
@@ -4074,6 +4075,7 @@ a:focus {
 
 .wrap-register-cart {
     float: right;
+    margin-top: 16px;
 }
 #header {
     background: #121406;
@@ -5742,6 +5744,7 @@ a:focus {
     color     : #fff;
     margin-top: 47px;
     padding   : 20px 0;
+    margin-bottom: 30px;
 }
 
 .item-service2 {
@@ -6227,7 +6230,7 @@ a:focus {
 
 .list-box-footer2 {
     background: #2b2b2b none repeat scroll 0 0;
-    margin-top: 50px;
+    margin-top: 0px;
     padding   : 45px 0 25px;
 }
 
@@ -7797,6 +7800,7 @@ a:focus {
 
 .contact-form-page {
     margin-top: 45px;
+    margin-bottom: 30px;
 }
 
 .item-contact-info .contact-icon {
@@ -7913,7 +7917,7 @@ a:focus {
 }
 
 .protect-video {
-    margin-top: 95px;
+    margin-top: 0px;
 }
 
 .about-full-protec span {
@@ -9243,11 +9247,11 @@ ol.list-post-comment {
 }
 
 .header4 {
-    padding: 31px 0 20px;
+    padding: 2px 0 2px;
 }
 
 .logo4 {
-    margin-top: -12px;
+    margin-top: 0px;
 }
 
 .main-nav.main-nav4>ul>li>a {
@@ -9540,7 +9544,7 @@ ol.list-post-comment {
 }
 
 .item-privacy-shipping li i {
-    color             : #999;
+    color             : #000;
     font-size         : 30px;
     -webkit-transition: all 0.3s ease-out 0s;
     transition        : all 0.3s ease-out 0s;
@@ -14302,7 +14306,7 @@ ol.list-post-comment {
 ************************************************************************/
 
 .list-feature-boxes .item-feature-box {
-    margin: 40px 0;
+    margin: 40px 0 30px;
 }
 
 .list-feature-boxes .row .col-md-6.col-sm-6.col-xs-12:nth-child(2n+1) {
@@ -19361,7 +19365,7 @@ a.button24:hover {
 }
 
 .form-my-account.form-forget-password>p {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     max-width    : 100%;
     position     : relative;
 }
@@ -19386,7 +19390,7 @@ a.button24:hover {
 }
 
 .protect-video {
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .list-company-importance {
@@ -19452,5 +19456,63 @@ td.product-quantity .info-qty {
     margin-top: 0;
 }
 .logo4 img {
-    height: 59px;
+    height: 70px;
+}
+.item-privacy-shipping.privacy-green-box {
+    background: #77bb2b;
+    color: #000;
+    border: 2px solid #000;
+}
+.item-privacy-shipping.privacy-green-box:hover {
+    border: 2px solid #000;
+    background: #000;
+    color: #77bb2b;
+}
+.item-privacy-shipping.privacy-green-box span {
+    color: #fff;
+}
+.info-qty .react-numeric-input input {
+    width: 100%;    
+}
+.view-offer-page .main-single-post p {
+    margin-bottom: 0;
+}
+.view-offer-page .main-single-post {
+    margin-bottom: 30px;
+}
+.m-b-30 {
+    margin-bottom: 30px;
+}
+.cart-collaterals {
+    margin-bottom: 30px;
+}
+.register-page .content-page {
+    margin-bottom: 30px;
+}
+.login-page .content-page {
+    margin-bottom: 30px;
+}
+.checkout-page .content-page {
+    margin-bottom: 30px;
+}
+.checkout-page .form-my-account {
+    padding-right: 15px;
+}
+.terms-and-condition-page .content-page {
+    margin-bottom: 30px;
+}
+.terms-and-condition-page .content-page .beautypress-replay-answer-container {
+    padding: 0;
+}
+.blog-list-post .item-post-blog:last-child {
+    margin-bottom: 0;
+}
+.offer-page .content-page {
+    margin-bottom: 30px;
+}
+.lost-password-p {
+    z-index: 99999;
+}
+.view-product-page .main-content-shop {
+    margin-bottom: 30px;
 }

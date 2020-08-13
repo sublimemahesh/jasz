@@ -3,10 +3,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import {PostData} from '../../services/PostData';
 import $ from 'jquery';
-import { withSwalInstance } from 'sweetalert2-react';
-import swal from 'sweetalert2';
-
-const SweetAlert = withSwalInstance(swal);
+import Swal from 'sweetalert2';
 
 class Contact extends Component {
     constructor(props) {
@@ -26,109 +23,71 @@ class Contact extends Component {
         }
         let reg = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
         if (data.fullName == '' || !data.fullName) {
-            const getAlert = () => (
-                        <SweetAlert
-                            show="true"
-                            title="Error"
-                            text="Enter Full Name"
-                            type= "error"
-                            >
-                            Text
-                        </SweetAlert>
-                        );
-            this.setState({
-                alert: getAlert()
-            });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                text: 'Enter Full Name.',
+                showConfirmButton: false,
+                timer: 1500
+            })
             return false;
         } else if (data.phoneNumber == '' || !data.phoneNumber) {
-            const getAlert = () => (
-                        <SweetAlert
-                            show="true"
-                            title="Error"
-                            text="Enter Phone Number"
-                            type= "error"
-                            >
-                            Text
-                        </SweetAlert>
-                        );
-            this.setState({
-                alert: getAlert()
-            });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                text: 'Enter Phone Number.',
+                showConfirmButton: false,
+                timer: 1500
+            })
             return false;
         } else if (data.email == '' || !data.email) {
-            const getAlert = () => (
-                        <SweetAlert
-                            show="true"
-                            title="Error"
-                            text="Enter Email"
-                            type= "error"
-                            >
-                            Text
-                        </SweetAlert>
-                        );
-            this.setState({
-                alert: getAlert()
-            });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                text: 'Enter Email.',
+                showConfirmButton: false,
+                timer: 1500
+            })
             return false;
         } else if (!reg.test(data.email)) {
-            const getAlert = () => (
-                        <SweetAlert
-                            show="true"
-                            title="Error"
-                            text="Enter Valid email"
-                            type= "error"
-                            />
-
-                        );
-            this.setState({
-                alert: getAlert()
-            });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                text: 'Enter Valid email.',
+                showConfirmButton: false,
+                timer: 1500
+            })
             return false;
         } else if (data.message == '' || !data.message) {
-            const getAlert = () => (
-                        <SweetAlert
-                            show="true"
-                            title="Error"
-                            text="Enter Message"
-                            type= "error"
-                            >
-                            Text
-                        </SweetAlert>
-                        );
-            this.setState({
-                alert: getAlert()
-            });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                text: 'Enter Message',
+                showConfirmButton: false,
+                timer: 1500
+            })
             return false;
         } else {
             PostData('send-email', data).then((result1) => {
                 let responseJson1 = result1;
 
                 if (responseJson1.feedData) {
-
-                    const getAlert = () => (
-                                <SweetAlert
-                                    show="true"
-                                    title="Success"
-                                    text="Your message was sent successfully."
-                                    type= "success"
-                                    />
-                                );
-                    this.setState({
-                        alert: getAlert()
-                    });
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        text: 'Your message was sent successfully.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
 
                 } else {
-                    const getAlert = () => (
-                                <SweetAlert
-                                    show="true"
-                                    title="Error"
-                                    text="There was an error. Please try again later."
-                                    type= "error"
-                                    />
-                                );
-                    this.setState({
-                        alert: getAlert()
-                    });
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        text: 'There was an error. Please try again later.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             });
         }
@@ -138,15 +97,15 @@ class Contact extends Component {
                 <div className="">
                     <Header />
                     <section id="subheader">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 ">
-                                    <div class="col-md-6 div-big-heading">
-                                        <h1 class="big-heading">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12 ">
+                                    <div className="col-md-6 div-big-heading">
+                                        <h1 className="big-heading">
                                             Contact Us
                                         </h1>
                                     </div>
-                                    <div class="col-md-6 div-p">
+                                    <div className="col-md-6 div-p">
                                         <p><a href="./">Home</a> | Contact Us</p>
                                     </div>
                                 </div>
@@ -157,7 +116,7 @@ class Contact extends Component {
                         <div className="content-page">
                             <div className="container">
                                 <div id="map">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.7012449169483!2d80.21828671476821!3d6.035673595628789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae173bbfc276e21%3A0xf75b6ee22cc3e16c!2sGalle%20IT%20Solutions!5e0!3m2!1sen!2slk!4v1582711285947!5m2!1sen!2slk" width="100%" height="450" frameborder="0"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31690.258793555142!2d80.24083135969691!3d6.856722691711213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3af8b532ab8bd%3A0x374fc03d3afa85d3!2sEheliyagoda!5e0!3m2!1sen!2slk!4v1597225633389!5m2!1sen!2slk" width="100%" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                 </div>
                                 <div className="contact-info-page">
                                     <div className="list-contact-info">

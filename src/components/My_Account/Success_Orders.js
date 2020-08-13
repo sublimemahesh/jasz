@@ -35,7 +35,6 @@ class Success_Orders extends Component {
     }
     getSuccessOrdersByMember() {
         PostData('get-success-orders-by-member', this.state.member).then((result) => {
-            console.log(`result: `, result );
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -60,7 +59,7 @@ class Success_Orders extends Component {
                                 <td>{order.country}</td>
                                 <td>{order.postal_code}</td>
                                 <td className="text-right">{order.amount}</td>
-                                <td><Link class="addcart-link view-btn" to={location} ><i class="fa fa-eye"></i></Link></td>
+                                <td><Link className="addcart-link view-btn" to={location} ><i className="fa fa-eye"></i></Link></td>
 
                             </tr>
 
@@ -79,6 +78,7 @@ class Success_Orders extends Component {
                             <div className="card order-card">
                                 <div className="card-body">
                                 <h2 className="order-card-title">My Success Orders</h2>
+                                <hr />
                                     <div className="table-responsive">
                                         <table className="table table-striped table-bordered">
                                             <thead>
@@ -108,7 +108,7 @@ class Success_Orders extends Component {
             <div className="layout-footer">
                 <div className="layout-footer-body">
                     <small className="version">Version 1.1.0</small>
-                    <small className="copyright">2020 &copy; DIGIZONE.LK   </small>
+                    <small className="copyright">2020 &copy; DEWENDRA.LK   </small>
                 </div>
             </div>
         </div>

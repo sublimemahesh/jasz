@@ -30,7 +30,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-            <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand" href="index.php">SUBLIME - WEB SITE CONTROL PANEL</a> </div>
+            <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand" href="index.php">SYNOTEC HOLDINGS - WEB SITE CONTROL PANEL</a> </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!-- Call Search -->
@@ -176,7 +176,7 @@
     <aside id="leftsidebar" class="sidebar">
         <!-- User Info -->
         <div class="user-info">
-            <div class="image"> <img src="images/profile/<?php echo $_SESSION[" id "]; ?>.jpg" width="48" height="48" alt="User" /> </div>
+            <div class="image"> <img src="images/profile/<?php echo $_SESSION["id"]; ?>.jpg" width="48" height="48" alt="User" /> </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php echo $_SESSION['name']; ?>
@@ -399,7 +399,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
                         <span>Reports</span>
@@ -430,7 +430,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
             </ul>
         </div>
@@ -438,7 +438,7 @@
         <!-- Footer -->
         <div class="legal">
             <div class="copyright"> &copy;
-                <?php echo date('Y'); ?> <a href="javascript:void(0);">BY : SYNOTEC HOLDINGS</a>. </div>
+                <?php echo date('Y'); ?> <a href="javascript:void(0);">BY : SYNOTEC HOLDINGS (PVT) LTD</a>. </div>
             <div class="version"> <b>Version: </b> 1.0.0 </div>
         </div>
         <!-- #Footer -->

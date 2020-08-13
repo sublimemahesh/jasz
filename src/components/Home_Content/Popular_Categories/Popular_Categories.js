@@ -4,7 +4,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import $ from 'jquery';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 class Popular_Categories extends Component {
@@ -32,13 +32,11 @@ class Popular_Categories extends Component {
 
     addToCart(id) {
         let items = sessionStorage.getItem("cart");
-        let arr = [];
-        // console.log("items", JSON.parse(sessionStorage.getItem("cart")));
+        
         if (items === '' || items === null) {
 
             let arr = [{ id: id, qty: 1 }];
             sessionStorage.setItem("cart", JSON.stringify(arr));
-            console.log("items", JSON.parse(sessionStorage.getItem("cart")));
             let count = $('#header-cart').attr('items');
             let new_item_count = parseInt(count) + 1;
             sessionStorage.setItem("cart_count", new_item_count);
@@ -99,10 +97,10 @@ class Popular_Categories extends Component {
                                 <div className="item-hot-deal-product">
                                     <div className="hot-deal-product-thumb">
                                         <div className="product-thumb">
-                                            <a className="product-thumb-link" href={`/product-view/${product.id}`}>
+                                            <NavLink className="product-thumb-link" to={`/product-view/${product.id}`}>
                                                 <img alt="" src={`upload/product/${product.image_name}`} className="first-thumb" />
                                                 <img alt="" src={`upload/product/${product.image_name2}`} className="second-thumb" />
-                                            </a>
+                                            </NavLink>
                                             <div className="product-info-cart">
                                                 <a className="addcart-link" onClick={() => this.addToCart(product.id)}><i className="fa fa-shopping-basket"></i> Add to Cart</a>
                                                 {this.state.alert}
@@ -110,8 +108,8 @@ class Popular_Categories extends Component {
                                         </div>
                                     </div>
                                     <div className="hot-deal-product-info">
-                                        <h3 className="title-product"><a href={`/product-view/${product.id}`}>{product.name}</a></h3>
-                                        <div class="info-price">
+                                        <h3 className="title-product"><NavLink to={`/product-view/${product.id}`}>{product.name}</NavLink></h3>
+                                        <div className="info-price">
                                             <span>{product.discount != 0 && product.discount != '' ? "Rs. " + (new Intl.NumberFormat().format(product.price - (product.price * product.discount / 100))) : "Rs. " + new Intl.NumberFormat().format((product.price))}</span>
                                             <del>{product.discount != 0 && product.discount != '' && "Rs. " + (new Intl.NumberFormat().format(product.price))}</del>
                                         </div>
@@ -145,7 +143,7 @@ class Popular_Categories extends Component {
                                     </div>
                                 </div>
                                 <div className="item-adv-simple">
-                                    <Link class="addcart-link" to={location} ><img alt="" src={`upload/category/banner/${feedData.cat_banner}`} /></Link>
+                                    <NavLink className="addcart-link" to={location} ><img alt="" src={`upload/category/banner/${feedData.cat_banner}`} /></NavLink>
                                 </div>
                             </div>
                         </div>

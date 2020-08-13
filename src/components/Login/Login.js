@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Swal from 'sweetalert2';
+import { NavLink } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -89,12 +90,12 @@ class Login extends Component {
         return (
             <div className="">
                 <Header />
-                <div id="content">
+                <div id="content" className="login-page">
                     <div className="content-page">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-10 col-sm-12 col-xs-12 col-md-offset-1">
-                                    <h2 className="title-shop-page">Login</h2>
+                                    <h2 className="title-shop-page login-title">Login</h2>
                                     <div className="row">
                                         <div className="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-ms-12">
                                             <div className="account-login">
@@ -102,9 +103,8 @@ class Login extends Component {
                                                     {/* <h2 className="title">Login</h2> */}
                                                     <p><input type="text" placeholder="Email *" id="email" /></p>
                                                     <p><input type="password" placeholder="Password *" id="password" /></p>
-                                                    <p>
-                                                        <input type="checkbox" id="remember" /> <label for="remember">Remember me</label>
-                                                        <a href="/forget-password">Lost Password?</a>
+                                                    <p className="lost-password-p">
+                                                        <NavLink to="/forget-password">Lost Password?</NavLink>
                                                     </p>
                                                     <p><button onClick={this.submitLoginForm}>Login</button>{this.state.alert}</p>
                                                 </div>

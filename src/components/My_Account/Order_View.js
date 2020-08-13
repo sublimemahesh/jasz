@@ -58,7 +58,6 @@ class Order_View extends Component {
     getOrderDetailsByID() {
 
         PostData('order-by-id', this.state.order).then((result) => {
-            console.log(`result: `, result );
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -69,7 +68,6 @@ class Order_View extends Component {
     getOrderPrductDetailsByID() {
 
         PostData('order-products-by-id', this.state.order).then((result) => {
-            console.log(`result: `, result );
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -193,20 +191,20 @@ class Order_View extends Component {
                                     {(() => {
                                         if (this.state.orderDetails.status == 0) {
                                             return (
-                                                <a  href="/my-account/canceled-orders" class="btn back-btn m-t-15 waves-effect">Back</a>
+                                                <a  href="/my-account/canceled-orders" className="btn back-btn m-t-15 waves-effect">Back</a>
                                                 )
                                           } else if (this.state.orderDetails.status == 1 && this.state.orderDetails.delivery_status == 0) {
                                             return (
-                                                    <a  href="/my-account/pending-orders" class="btn back-btn m-t-15 waves-effect">Back</a>
+                                                    <a  href="/my-account/pending-orders" className="btn back-btn m-t-15 waves-effect">Back</a>
                                                     )
                                           } else if (this.state.orderDetails.status == 1 && this.state.orderDetails.delivery_status == 1) {
                                             return (
-                                                    <a  href="/my-account/confirmed-orders" class="btn back-btn m-t-15 waves-effect">Back</a>
+                                                    <a  href="/my-account/confirmed-orders" className="btn back-btn m-t-15 waves-effect">Back</a>
 
                                                     )
                                           } else if (this.state.orderDetails.status == 1 && this.state.orderDetails.delivery_status == 2) {
                                             return (
-                                                    <a  href="/my-account/success-orders" class="btn back-btn m-t-15 waves-effect">Back</a>
+                                                    <a  href="/my-account/success-orders" className="btn back-btn m-t-15 waves-effect">Back</a>
 
                                                     )
                                           }
@@ -222,7 +220,7 @@ class Order_View extends Component {
             <div className="layout-footer">
                 <div className="layout-footer-body">
                     <small className="version">Version 1.1.0</small>
-                    <small className="copyright">2020 &copy; DIGIZONE.LK   </small>
+                    <small className="copyright">2020 &copy; DEWENDRA.LK   </small>
                 </div>
             </div>
         </div>

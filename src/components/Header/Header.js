@@ -2,10 +2,6 @@ import React, { Component }
 from 'react';
 import './Header.css';
 import logo from '../../images/logo/logo.png';
-import flag_usa from '../../images/home2/flag-usa.png';
-import flag_french from '../../images/home1/flag-french.jpg';
-import flag_german from '../../images/home1/flag-german.jpg';
-import Select from 'react-select';
 import {PostData} from '../../services/PostData';
 import $ from 'jquery';
 import { NavLink } from 'react-router-dom';
@@ -52,7 +48,6 @@ class Header extends Component {
     }
     getCategories() {
         PostData('category').then((result) => {
-            console.log(result);
             let responseJson = result;
 
             if (responseJson.feedData) {
@@ -62,7 +57,6 @@ class Header extends Component {
     }
     getBrands() {
         PostData('brand').then((result2) => {
-            console.log(result2);
             let responseJson2 = result2;
 
             if (responseJson2.feedData) {
@@ -80,11 +74,9 @@ class Header extends Component {
         this.setState({
             categoryID: selectedOption.value
         });
-        console.log(`Option selected:`, selectedOption);
     }
     handleChange1 = selectedOption1 => {
         this.setState({selectedOption1});
-        console.log(`Option selected:`, selectedOption1);
     }
     displayNav() {
         $('.main-nav4 ul').toggleClass('show-nav');

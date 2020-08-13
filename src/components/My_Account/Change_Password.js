@@ -128,32 +128,34 @@ class Change_Password extends Component {
                     <div className="layout-content">
                         <div className="layout-content-body">
                             <div className="row gutter-xs">
-                                <div class="row col-md-12">
-                                    <div class="col-md-8 col-sm-12 col-md-offset-2">
-                                        <div class="demo-form-wrapper card " id="form-data">
-                                            <div class="form form-horizontal">
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="full_name">Current Password: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtCurrentPw" name="full_name" class="form-control" type="password" value={this.state.full_name} onChange={e => this.setState({ full_name: e.target.value })} />
+                                <div className="row col-md-12">
+                                    <div className="col-md-8 col-sm-12 col-md-offset-2">
+                                        <div className="demo-form-wrapper card " id="form-data">
+                                        <h2 className="order-card-title m-l-20">Change Password</h2>
+                                            <hr />
+                                            <div className="form form-horizontal">
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="full_name">Current Password: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtCurrentPw" name="full_name" className="form-control" type="password" value={this.state.full_name} onChange={e => this.setState({ full_name: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="email">New Password: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtNewPw" name="email" class="form-control" type="password" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="email">New Password: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtNewPw" name="email" className="form-control" type="password" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="contact_no">Confirm Password: </label>
-                                                    <div class="col-sm-9">
-                                                        <input id="txtConfirmPw" name="contact_no" class="form-control" type="password" value={this.state.contact_no} onChange={e => this.setState({ contact_no: e.target.value })} />
+                                                <div className="form-group">
+                                                    <label className="col-sm-3 control-label" for="contact_no">Confirm Password: </label>
+                                                    <div className="col-sm-9">
+                                                        <input id="txtConfirmPw" name="contact_no" className="form-control" type="password" value={this.state.contact_no} onChange={e => this.setState({ contact_no: e.target.value })} />
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-3 col-md-offset-9 col-sm-6">
+                                                <div className="form-group">
+                                                    <div className="col-md-3 col-md-offset-9 col-sm-6">
                                                         <input type="hidden" name="id" value="value={this.state.member}" />
-                                                        <button class="btn btn-primary btn-block" onClick={this.changePassword}>Change Password</button>{this.state.alert}
+                                                        <button className="btn btn-primary btn-block" onClick={this.changePassword}>Change Password</button>{this.state.alert}
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,7 +168,7 @@ class Change_Password extends Component {
                     <div className="layout-footer">
                         <div className="layout-footer-body">
                             <small className="version">Version 1.1.0</small>
-                            <small className="copyright">2020 &copy; DIGIZONE.LK   </small>
+                            <small className="copyright">2020 &copy; DEWENDRA.LK   </small>
                         </div>
                     </div>
                 </div>

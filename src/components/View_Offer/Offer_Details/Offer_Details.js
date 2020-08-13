@@ -19,8 +19,13 @@ class Offer_Details extends Component {
                                 <h2>{this.props.feedData.title}</h2>
                                 <ul className="post-date-author">
                                         <li>{Moment(this.props.feedData.created_at).format('MMMM D, Y')}</li>
-                                        <li>Rs: <a href="#">{this.props.feedData.price}</a></li>
+                                        <li>Rs: <a href="#">{this.props.feedData.discount != 0 && this.props.feedData.discount != '' ? (new Intl.NumberFormat().format(this.props.feedData.price - (this.props.feedData.price * this.props.feedData.discount / 100))) : new Intl.NumberFormat().format((this.props.feedData.price))}</a></li>
+                                        <li> <del>Rs: <a href="#">{this.props.feedData.discount != 0 && this.props.feedData.discount != '' && (new Intl.NumberFormat().format(this.props.feedData.price))}</a></del></li>
                                         <li>Discount: <a href="#comment">{this.props.feedData.discount}%</a></li>
+                                        <div className="info-price">
+                        <span></span>
+                        
+                    </div>
                                 </ul>
                         </div>
                         <p dangerouslySetInnerHTML={{ __html: this.props.feedData.description }} />

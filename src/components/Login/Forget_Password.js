@@ -71,7 +71,7 @@ class Forget_Password extends Component {
 					<div className="col-md-10 col-sm-12 col-xs-12 col-md-offset-1">
 						<h2 className="title-shop-page">Forget Password</h2>
 						<div className="row">
-							<div className="col-md-6 col-md-offset-3 col-sm-12 col-ms-12">
+							<div className="col-md-6 col-md-offset-3 col-sm-8 col-xs-12 col-sm-offset-2">
 								<div className="account-login">
 									<div className="form-my-account form-forget-password">
 										<h2 className="title">Please enter your emil address to change password or username. We will send a link to your email...</h2>
