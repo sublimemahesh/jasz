@@ -40,10 +40,10 @@ class Top_Bar extends Component {
                 <div className="navbar navbar-default">
                     <div className="navbar-header">
                         <NavLink className="navbar-brand navbar-brand-center" to="/home">
-                            <img className="navbar-brand-logo hidden-xs" src={logo} alt="Digizone.lk" />
+                            <img className="navbar-brand-logo hidden-xs" src={logo} alt="DEWENDRA.COM" />
                         </NavLink>
                     </div>
-                    <NavLink to="/home" ><img className="navbar-brand-logo visible-xs" src={logo} alt="Digizone.lk" /></NavLink>
+                    <NavLink to="/home" ><img className="navbar-brand-logo visible-xs" src={logo} alt="DEWENDRA.COM" /></NavLink>
                     <div className="navbar-toggleable">
                     <a href="#" className="toggle-mobile-menu" onClick={this.clickMobileNav}><span> </span></a>
                         <nav id="navbar" className="navbar-collapse collapse">

@@ -116,7 +116,7 @@ class Header extends Component {
                                     <div className="wrap-register-cart">
                                         <div className="register-box">
                                             <h4 className="header-contact-details">HOTLINE</h4>
-                                            <p className="">+94 71 222 6622</p>
+                                            <p className="">(+94) 71 869 5499</p>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ class Header extends Component {
                                     <div className="wrap-register-cart wrap-register-cart-hotline">
                                         <div className="register-box">
                                            <h4 className="header-contact-details">EMAIL</h4>
-                                            <p className="header-contact-details-p">info@digizone.lk</p>
+                                            <p className="header-contact-details-p">sales@dewendra.com</p>
                                         </div>
                                     </div>
                                 </div>

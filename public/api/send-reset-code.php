@@ -21,12 +21,12 @@ if ($MEMBER->checkEmail($json)) {
         //server webmail login
 
         $host = "sg1-ls7.a2hosting.com";
-        $username = "test@airportcars.lk";
-        $password = "TestEmail123";
+        $username = "sales@dewendra.com";
+        $password = "$6)~W{voGKY6";
 
-        $webmail = "test@airportcars.lk";
-        $comEmail = "kavininisansala96@gmail.com";
-        $visitorSubject = "Dashboard Password Reset - Digizone.lk";
+        $webmail = "sales@dewendra.com";
+        $comEmail = "sales@dewendra.com";
+        $visitorSubject = "Dashboard Password Reset - DEWENDRA BRAND STORE";
 
         $html = "<table style='border:solid 1px #F0F0F0; font-size: 15px; font-family: sans-serif; padding: 0;'>";
 

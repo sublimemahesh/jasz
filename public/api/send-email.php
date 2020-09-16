@@ -9,11 +9,11 @@ $todayis = date("l, F j, Y, g:i a");
 $site_link = "https://" . $_SERVER['HTTP_HOST'];
 
 //Display Strings 
-$comany_name = "Digizone.lk";
-$website_name = "www.galleit.com";
-$comConNumber = "+94 71 850 8080";
-$comEmail = "kavininisansala96@gmail.com";
-$comOwner = "Managala - Digizone.lk";
+$comany_name = "DEWENDRA BRAND STORE";
+$website_name = "www.dewendra.com";
+$comConNumber = "(+94) 71 869 5499";
+$comEmail = "sales@dewendra.com";
+$comOwner = "DEWENDRA BRAND STORE";
 
 // Post Variables
 $visitor_name = $json['fullName'];
@@ -25,19 +25,19 @@ $message = $json['message'];
 //server webmail login
 
 $host = "sg1-ls7.a2hosting.com";
-$username = "test@airportcars.lk";
-$password = "TestEmail123";
+$username = "sales@dewendra.com";
+$password = "$6)~W{voGKY6";
 
 //------------------------
 
-$webmail = "test@airportcars.lk";
-$visitorSubject = "Thank You " . $visitor_name . " - Digizone.lk";
+$webmail = "sales@dewendra.com";
+$visitorSubject = "Thank You " . $visitor_name . " - DEWENDRA BRAND STORE";
 $companySubject = "Contact Inquiry - " . $visitor_name;
 
 //----------------------CAPTCHACODE---------------------
 //----------------------- LOGO ---------------------------------
 
-$logo = $site_link . '/contact-form/img/logo.png';
+$logo = $site_link . '/assets/images/logo/logo.png';
 //$logo = 'https://ci4.googleusercontent.com/proxy/lz0tSijRTHwJ3I7PQ1iXA67lYFfULG0evRbR_St785VeiABNukQPJl-JGBcLKTkZz1q4pG6g25P1uxTW4dYkOznHHNV3f-zB=s0-d-e1-ft#http://romaya.galle.website/booking-form/img/logo.png';
 
 

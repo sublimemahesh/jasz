@@ -56,7 +56,7 @@ class Database {
     public function getConnection() {
 
         $link = new mysqli('localhost', 'root', '', 'galleit');
-        dd($link);
+        // dd($link);
         return $link;
     }
 

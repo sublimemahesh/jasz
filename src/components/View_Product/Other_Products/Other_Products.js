@@ -23,10 +23,10 @@ class Other_Products extends Component {
                     return (
                         <li className="clearfix">
                             <div className="product-related-thumb">
-                                <NavLink to={`/product-view/${feedData.id}`}><img className="first-thumb" alt="" src={`../upload/product/thumb/${feedData.image_name}`} /></NavLink>
+                                <a href={`/product-view/${feedData.id}`}><img className="first-thumb" alt="" src={`../upload/product/thumb/${feedData.image_name}`} /></a>
                             </div>
                             <div className="product-related-info">
-                                <h3 className="title-product"><NavLink to={`/product-view/${feedData.id}`}>{feedData.name}</NavLink></h3>
+                                <h3 className="title-product"><a href={`/product-view/${feedData.id}`}>{feedData.name}</a></h3>
                                 {/* <span>Brand: {this.getBrandDetails(feedData.id)}</span> */}
                                 <div className="info-price">
                                     <span>{feedData.discount != 0 && feedData.discount != '' ? "Rs. " + (new Intl.NumberFormat().format(feedData.price - (feedData.price * feedData.discount / 100))) : "Rs. " + new Intl.NumberFormat().format((feedData.price))}</span><br />

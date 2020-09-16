@@ -9,7 +9,7 @@
 /**
  * Description of Product
  *
- * @author W j K n Â¨
+ * @author W j K n ﾃつｨ
  */
 class Product {
 
@@ -69,7 +69,7 @@ class Product {
                 . $this->isActive . "', '"
                 . $this->isFeaturedProduct . "', '"
                 . $this->queue . "')";
-
+// dd($query);
         $db = new Database();
         $result = $db->readQuery($query);
         if ($result) {
@@ -144,7 +144,7 @@ class Product {
     }
 
     public function getProductsById($product) {
-        $query = 'SELECT * FROM `product` WHERE type="' . $product . '"   ORDER BY queue ASC';
+        $query = 'SELECT * FROM `product` WHERE type="' . $product . '" AND `is_active` = 1 ORDER BY queue ASC';
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -156,7 +156,7 @@ class Product {
 
     public function getProductsBySubCategoryID($sub_category) {
         
-        $query = 'SELECT * FROM `product` WHERE `sub_category` ="' . $sub_category . '"   ORDER BY queue';
+        $query = 'SELECT * FROM `product` WHERE `sub_category` ="' . $sub_category . '" AND  `is_active` = 1 ORDER BY queue';
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -169,7 +169,7 @@ class Product {
     
     public function getProductsByCategoryID($category) {
         
-        $query = 'SELECT * FROM `product` WHERE `category` ="' . $category . '"   ORDER BY queue';
+        $query = 'SELECT * FROM `product` WHERE `category` ="' . $category . '" AND  `is_active` = 1 ORDER BY queue';
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -181,7 +181,7 @@ class Product {
     }
     
     public function getProductsByBrandID($brand) {
-        $query = 'SELECT * FROM `product` WHERE `brand` ="' . $brand . '"   ORDER BY queue';
+        $query = 'SELECT * FROM `product` WHERE `brand` ="' . $brand . '" AND `is_active` = 1   ORDER BY queue';
 
         $db = new Database();
         $result = $db->readQuery($query);
@@ -209,7 +209,7 @@ class Product {
     }
 
     public function getAll() {
-        $query = "SELECT * FROM `product` ORDER BY `queue`";
+        $query = "SELECT * FROM `product` WHERE `is_active` = 1 ORDER BY `queue`";
         $db = new Database();
         $result = $db->readQuery1($query);
         $array_res = array();
@@ -220,7 +220,7 @@ class Product {
     }
 
     public function getFeaturedProducts() {
-        $query = "SELECT * FROM `product` WHERE `is_featured_product` = 1 ORDER BY `queue`";
+        $query = "SELECT * FROM `product` WHERE `is_active` = 1 AND `is_featured_product` = 1 ORDER BY `id` ASC LIMIT 5";
         $db = new Database();
         $result = $db->readQuery1($query);
         $array_res = array();
@@ -231,7 +231,7 @@ class Product {
     }
 
     public function getProductsByCategory($category) {
-        $query = 'SELECT * FROM `product` WHERE `category` ="' . $category . '"   ORDER BY queue ASC';
+        $query = 'SELECT * FROM `product` WHERE `category` ="' . $category . '" AND `is_active` = 1  ORDER BY queue ASC';
         $db = new Database();
         $result = $db->readQuery1($query);
         $array_res = array();
@@ -242,7 +242,7 @@ class Product {
         return $array_res;
     }
      public function getProductsByCategoryWithRandom($product, $category) {
-        $query = 'SELECT * FROM `product` WHERE `category` ="' . $category . '" AND `id` <> "' . $product . '"   ORDER BY rand() LIMIT 5';
+        $query = 'SELECT * FROM `product` WHERE `category` ="' . $category . '" AND `id` <> "' . $product . '" AND  `is_active` = 1 ORDER BY rand() LIMIT 5';
         $db = new Database();
         $result = $db->readQuery1($query);
         $array_res = array();
@@ -254,7 +254,7 @@ class Product {
     }
     
     public function getProductsByBrand($brand) {
-        $query = 'SELECT * FROM `product` WHERE `brand` ="' . $brand . '"   ORDER BY queue ASC';
+        $query = 'SELECT * FROM `product` WHERE `brand` ="' . $brand . '"  `is_active` = 1 ORDER BY queue ASC';
 
         $db = new Database();
         $result = $db->readQuery1($query);
@@ -265,7 +265,7 @@ class Product {
         return $array_res;
     }
     public function getProductsBySubCategory($subcat) {
-        $query = 'SELECT * FROM `product` WHERE `sub_category` ="' . $subcat . '"   ORDER BY queue ASC';
+        $query = 'SELECT * FROM `product` WHERE `sub_category` ="' . $subcat . '"  `is_active` = 1  ORDER BY queue ASC';
         
         $db = new Database();
         $result = $db->readQuery1($query);
@@ -295,7 +295,7 @@ class Product {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
 
-        $query = "SELECT * FROM `product` " . $where . " ORDER BY queue ASC";
+        $query = "SELECT * FROM `product` " . $where . " AND `is_active` = 1 ORDER BY queue ASC";
         $db = new Database();
         $result = $db->readQuery1($query);
         $array_res = array();

@@ -6,5 +6,5 @@ if (!isset($_SESSION)) {
 } 
 
 $json = json_decode(file_get_contents('php://input'), true);
-dd($json);
-dd(json_decode($json, true));
+// dd($json);
+// dd(json_decode($json, true));

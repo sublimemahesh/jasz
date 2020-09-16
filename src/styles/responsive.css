@@ -989,6 +989,10 @@
         margin-left: 0px;
     }
 
+    .register-box {
+        margin-left: -17px;
+    }
+
 }
 
 /*End Screen 990*/
@@ -1267,9 +1271,11 @@
     .my-cart-page .info-qty .react-numeric-input input {
         width: 142px;
     }
+
     .product-info {
         padding: 16px;
     }
+
     .col-md-6.col-sm-8 {
         flex     : 0 0 66.666667%;
         max-width: 66.666667%;
@@ -1739,6 +1745,14 @@
 
     .category-adv .item-cat-brand img {
         max-width: 155px;
+    }
+
+    .wrap-register-cart {
+        margin-top: 18px;
+    }
+
+    .register-box>ul {
+        margin-bottom: 9px;
     }
 
     /*.featured-product12 .item-category-featured-product {
@@ -2972,29 +2986,40 @@
     .checkbox-container {
         padding-left: 46px;
     }
+
     h2.title-shop-page {
         font-size: 20px;
     }
+
     /* .list-feature-boxes .item-feature-box.feature-box-values {
         margin-bottom: 0;
     } */
     .title-shop-page.login-title {
         margin-top: 35px;
     }
+
     .account-register .form-my-account {
         margin-top: 0;
     }
+
     .view-product {
         margin-top: 30px;
     }
+
     .checkout-page .checkbox-container {
         padding-left: 50px;
     }
+
     .terms-and-condition-page .content-page {
         margin-top: 30px;
     }
+
     .terms-and-condition-page .content-page .beautypress-replay-answer-container {
         padding: 0 30px;
+    }
+
+    .register-box {
+        margin-left: 0px;
     }
 }
 

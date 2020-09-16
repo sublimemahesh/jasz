@@ -122,5 +122,5 @@ if (isset($_POST['update'])) {
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-    dd($PAGES);
+    // dd($PAGES);
 }

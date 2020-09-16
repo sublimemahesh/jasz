@@ -1,6 +1,6 @@
 export function PostData(type, userData) {
     // let BaseURL = 'http://localhost/jasz/public/api/' + type + '.php';
-    let BaseURL = 'https://jasz.synotec.lk/api/' + type + '.php';
+    let BaseURL = 'http://dewendra.com/api/' + type + '.php';
 
     return new Promise((resolve, reject) => {
         console.log(`userData:`, userData);

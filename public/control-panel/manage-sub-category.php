@@ -96,7 +96,7 @@ $CATEGORY = new Category($id);
                                                         <div class="d">
                                                             <a href="#"  class="delete-sub-category" data-id="<?php echo $sub_category['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
                                                             <a href="edit-sub-category.php?id=<?php echo $sub_category['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
-                                                            <a href="arrange-sub-categories.php?id=<?php echo $sub_category['id']; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
+                                                            <a href="arrange-sub-categories.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
 
                                                             <a href="manage-products-by-sub-category.php?id=<?php echo $sub_category['id']; ?>">  <button class="glyphicon glyphicon-shopping-cart edit-btn"></button></a>
 

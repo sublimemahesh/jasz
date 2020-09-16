@@ -90,12 +90,10 @@ if (isset($_POST['create'])) {
     $PRODUCT->image_name2 = $imgName1;
     $VALID->check($PRODUCT, [
         'category' => ['required' => TRUE],
-        'brand' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'short_description' => ['required' => TRUE],
         'description' => ['required' => TRUE],
         'price' => ['required' => TRUE],
-        'discount' => ['required' => TRUE],
         'image_name' => ['required' => TRUE],
         'image_name2' => ['required' => TRUE]
     ]);
@@ -223,7 +221,6 @@ if (isset($_POST['update'])) {
     $VALID = new Validator();
     $VALID->check($PRODUCT, [
         'category' => ['required' => TRUE],
-        'brand' => ['required' => TRUE],
         'name' => ['required' => TRUE],
         'short_description' => ['required' => TRUE],
         'description' => ['required' => TRUE],

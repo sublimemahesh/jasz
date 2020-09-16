@@ -53,7 +53,7 @@ class Pending_Orders extends Component {
             <div className="layout-footer">
                 <div className="layout-footer-body">
                     <small className="version">Version 1.1.0</small>
-                    <small className="copyright">2020 &copy; DIGIZONE.LK   </small>
+                    <small className="copyright">2020 &copy; DEWENDRA.COM   </small>
                 </div>
             </div>
         </div>
