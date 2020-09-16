@@ -23,7 +23,7 @@ $visitor_message = '<html xmlns="http://www.w3.org/1999/xhtml">
                                                                         <table width="100%" cellspacing="0" cellpadding="0" border="0">
                                                                             <tbody><tr>
                                                                                     <td width="182">
-                                                                                        <a href="' . $site_link . '" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://www.gallecabsandtours.com&amp;source=gmail&amp;ust=1574393192616000&amp;usg=AFQjCNGNM8_Z7ZMe7ndwFlJuHEP29nDd3Q"> <img src="'.$logo.'" alt="" class="CToWUd" border="0">
+                                                                                        <a href="' . $site_link . '" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://www.gallecabsandtours.com&amp;source=gmail&amp;ust=1574393192616000&amp;usg=AFQjCNGNM8_Z7ZMe7ndwFlJuHEP29nDd3Q"> <img src="'.$logo.'" alt="" style="height: 70px;" class="CToWUd" border="0">
                                                                                         </a>
                                                                                     </td>
                                                                                     <td width="393">
@@ -279,7 +279,5 @@ $company_message = '<html xmlns="http://www.w3.org/1999/xhtml">
         </table>
     </body>
 </html>';
-var_dump($company_message);
-var_dump($visitor_message);
 return false;
 ?>

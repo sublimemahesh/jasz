@@ -190,7 +190,7 @@ $ORDER_PRODUCT = $ORDER_PRODUCT->getOrdersById($id);
                                 <?php
                                 if ($ORDER->status == 1 && $ORDER->deliveryStatus == 0) {
                                 ?>
-                                    <a href="#" class="mark-as-delivered btn btn-sm btn-danger" data-id="<?php echo $ORDER->id; ?>">Mark as Confirmed</a>
+                                    <a href="#" class="mark-as-delivered btn btn-sm btn-danger" data-id="<?php echo $ORDER->id; ?>">Confirm Order</a>
                                 <?php
                                 } else if ($ORDER->status == 1 && $ORDER->deliveryStatus == 1) {
                                 ?>

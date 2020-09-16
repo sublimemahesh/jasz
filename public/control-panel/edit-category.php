@@ -70,7 +70,7 @@ $CATEGORY = new Category($id);
                                         <div class="form-group form-float">
                                            
                                                 <input type="file" id="image" class="form-control" name="banner">
-                                                <img src="../upload/category/banner/<?php echo $CATEGORY->banner; ?>" id="image"  name="banner" alt="old image">
+                                                <img src="../upload/category/banner/<?php echo $CATEGORY->banner; ?>" id="image"  name="banner" style="width: 50%" alt="old image">
                                          
                                         </div>
                                     </div>

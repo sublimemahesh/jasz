@@ -5,11 +5,11 @@ $(document).ready(function () {
 
         swal({
             title: "Are you sure?",
-            text: "Are you want to mark this order as delivered???",
+            text: "Are you want to confirm this order???",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, mark it!",
+            confirmButtonText: "Yes, confirm it!",
             closeOnConfirm: false
         }, function () {
 
@@ -22,8 +22,8 @@ $(document).ready(function () {
                     if (jsonStr.status) {
 
                         swal({
-                            title: "Marked!",
-                            text: "Your order has been marked as delivered.",
+                            title: "Confirmed!",
+                            text: "Your order has been confirmed successfully.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
         swal({
             title: "Are you sure?",
-            text: "Are you want to mark this order as completed???",
+            text: "Are you want to mark this order as successfull???",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -61,7 +61,7 @@ $(document).ready(function () {
 
                         swal({
                             title: "Marked!",
-                            text: "Order has been marked as completed.",
+                            text: "Order has been marked as success.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false

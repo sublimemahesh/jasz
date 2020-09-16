@@ -2,7 +2,11 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$SUB_CATEGORY = new SubCategory(NULL);
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+$CATEGORY = new Category($id);
 ?>
 <!DOCTYPE html>
 <html> 
@@ -35,10 +39,10 @@ $SUB_CATEGORY = new SubCategory(NULL);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Arrange Sub Category</h2>
+                                <h2>Arrange Sub Categories - <?= $CATEGORY->name; ?></h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-sub-category.php">
+                                        <a href="manage-sub-category.php?id=<?= $id; ?>">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
@@ -51,15 +55,15 @@ $SUB_CATEGORY = new SubCategory(NULL);
                                             <div class="col-md-12 arrange-container">
                                                 <ul id="sortable">
                                                     <?php
-                                                    if (count($SUB_CATEGORY->all()) > 0) {
-                                                        foreach ($SUB_CATEGORY->all() as $key => $img) {
+                                                    $subcategories = SubCategory::getAllSubCategoryByCategory($id);
+                                                    if (count($subcategories) > 0) {
+                                                        foreach ($subcategories as $key => $img) {
                                                             ?>
                                                             <div class="col-md-3" style="list-style: none;">
                                                                 <li class="ui-state-default">
                                                                     <span class="number-class">(<?php echo $key + 1; ?>)</span>
                                                                     <img class="img-responsive" src="../upload/category/sub/<?php echo $img["image_name"]; ?>" alt=""/>
                                                                     <input type="hidden" name="sort[]"  value="<?php echo $img["id"]; ?>" class="sort-input"/>
-
                                                                 </li>
                                                             </div>
 
@@ -67,7 +71,7 @@ $SUB_CATEGORY = new SubCategory(NULL);
                                                         }
                                                     } else {
                                                         ?> 
-                                                        <b>No categories in the database.</b> 
+                                                        <b>No any sub categories.</b> 
                                                     <?php } ?> 
 
                                                 </ul>  

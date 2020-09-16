@@ -104,9 +104,9 @@ class Footer extends Component {
                                 <div className="item-box-footer2">
                                     <h2>Contact us</h2>
                                     <ul className="contact-footer2">
-                                        <li><i className="fa fa-map-marker"></i> Main Street, Eheliyagoda 70600</li>
+                                        <li><i className="fa fa-map-marker"></i>Dewendra Brand Store, No. 59A Main Street, Eheliyagoda.</li>
                                         <li><i className="fa fa-mobile"></i> (+94) 71 869 5499</li>
-                                        <li><i className="fa fa-envelope-o"></i> dewendraa@gmail.com</li>
+                                        <li><i className="fa fa-envelope-o"></i> sales@dewendra.com</li>
                                     </ul>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ class Footer extends Component {
                         <div className="row">
                             <div className="col-md-5 col-sm-5 col-xs-12">
                                 <div className="copyright2">
-                                    <p>Copyright DEWENDRA.LK © 2020. All Rights Reserved. </p>
+                                    <p>Copyright DEWENDRA.COM © 2020. All Rights Reserved. </p>
                                     <p>Designed by <a href="www.synotec.lk">Synotec Holdings (pvt) Ltd.</a></p>
                                 </div>
                             </div>

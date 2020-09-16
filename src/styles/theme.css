@@ -3991,6 +3991,7 @@ a:focus {
     display      : inline-block;
     margin-right : 16px;
     padding-right: 25px;
+    margin-left: -22px;
 }
 
 .mini-cart.mini-cart-2 {
@@ -4000,7 +4001,7 @@ a:focus {
 }
 
 .register-box>ul {
-    margin: 0;
+    margin: 0 0 9px;
 }
 
 .register-box li {
@@ -4013,6 +4014,7 @@ a:focus {
     font-size     : 12px;
     margin        : -5px 0 0;
     text-transform: uppercase;
+    line-height: 1.1;
 }
 
 .register-box a {
@@ -4051,6 +4053,7 @@ a:focus {
     line-height  : 33px;
     text-align   : center;
     width        : 40px;
+    margin-top: -4px;
 }
 
 .header-mini-cart2 {
@@ -4075,7 +4078,7 @@ a:focus {
 
 .wrap-register-cart {
     float: right;
-    margin-top: 16px;
+    margin-top: 18px;
 }
 #header {
     background: #121406;
@@ -19172,7 +19175,7 @@ a.button24:hover {
     font-weight  : 600;
     color        : #75b72e;
     margin-top   : 2px;
-    margin-bottom: 3px;
+    margin-bottom: 8px;
 }
 
 .register-box .header-contact-details-p {
